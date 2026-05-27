@@ -22,6 +22,18 @@ content="Educational freediving toolkit with physics calculators, training table
 --border:rgba(255,255,255,.08);
 }
 
+html.light {
+--bg:#f8f9fa;
+--panel:#ffffff;
+--panel2:#f0f2f5;
+--text:#1a1a1a;
+--muted:#666666;
+--accent:#0066cc;
+--ok:#2ecc71;
+--warn:#ff6b6b;
+--border:rgba(0,0,0,.1);
+}
+
 *{
 box-sizing:border-box;
 }
@@ -35,6 +47,11 @@ font-family:
 system-ui,
 Segoe UI,
 Arial;
+transition:background-color 0.3s, color 0.3s;
+}
+
+html.light body {
+background: linear-gradient(180deg, #f8f9fa, #eeeff2);
 }
 
 header{
@@ -56,6 +73,11 @@ padding:
 
 z-index:50;
 
+transition:background-color 0.3s;
+}
+
+html.light header {
+background: rgba(255,255,255,.88);
 }
 
 .title{
@@ -74,6 +96,21 @@ font-size:22px;
 margin-top:6px;
 color:var(--muted);
 font-size:13px;
+}
+
+.theme-toggle{
+background:var(--panel);
+border:1px solid var(--border);
+color:var(--text);
+padding:6px 10px;
+border-radius:999px;
+cursor:pointer;
+font-size:12px;
+transition:all 0.2s;
+}
+
+.theme-toggle:hover{
+border-color:var(--accent);
 }
 
 .small-link{
@@ -98,6 +135,10 @@ border-radius:
 .small-link:hover{
 color:white;
 border-color:var(--accent);
+}
+
+html.light .small-link:hover{
+color:var(--accent);
 }
 
 nav{
@@ -129,6 +170,76 @@ background:var(--panel);
 
 border-radius:999px;
 
+}
+
+.hero{
+position:relative;
+width:100%;
+height:300px;
+overflow:hidden;
+margin-bottom:40px;
+border-radius:14px;
+}
+
+.hero::before{
+content:'';
+position:absolute;
+top:0;
+left:0;
+right:0;
+bottom:0;
+background-image:url('pexels-emmali-5123222.webp');
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+z-index:1;
+}
+
+.hero::after{
+content:'';
+position:absolute;
+top:0;
+left:0;
+right:0;
+bottom:0;
+background:rgba(7,17,31,0.65);
+z-index:2;
+}
+
+.hero-content{
+position:absolute;
+top:0;
+left:0;
+right:0;
+bottom:0;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+z-index:3;
+text-align:center;
+}
+
+.hero-title{
+font-size:36px;
+font-weight:bold;
+margin:0 20px;
+line-height:1.3;
+}
+
+.hero-subtitle{
+font-size:16px;
+color:var(--muted);
+margin:12px 20px 0;
+}
+
+html.light .hero::after{
+background:rgba(255,255,255,0.7);
+}
+
+html.light .hero-title,
+html.light .hero-subtitle{
+color:var(--text);
 }
 
 .container{
@@ -199,6 +310,10 @@ border:1px solid rgba(255,255,255,.04);
 
 }
 
+html.light .card{
+border:1px solid rgba(0,0,0,.08);
+}
+
 label{
 font-size:12px;
 color:var(--muted);
@@ -233,9 +348,23 @@ font-family:inherit;
 
 }
 
+html.light input,
+html.light button,
+html.light textarea,
+html.light select{
+background:#f0f2f5;
+color:var(--text);
+border:1px solid var(--border);
+}
+
 input::placeholder,
 textarea::placeholder{
 color:rgba(255,255,255,.3);
+}
+
+html.light input::placeholder,
+html.light textarea::placeholder{
+color:rgba(0,0,0,.4);
 }
 
 button{
@@ -266,6 +395,10 @@ border:1px solid var(--border);
 
 margin-top:12px;
 
+}
+
+html.light .result{
+background:#f0f2f5;
 }
 
 .note{
@@ -324,6 +457,10 @@ margin:16px 0;
 
 }
 
+html.light .progress{
+background:#e0e0e0;
+}
+
 .progress-fill{
 
 height:100%;
@@ -364,6 +501,46 @@ font-weight:600;
 color:var(--accent);
 }
 
+.resource-card{
+background:var(--panel2);
+padding:18px;
+border-radius:12px;
+border:1px solid var(--border);
+text-align:center;
+}
+
+.resource-card h4{
+margin:0 0 8px 0;
+font-size:14px;
+}
+
+.resource-card p{
+margin:8px 0;
+font-size:12px;
+color:var(--muted);
+}
+
+.resource-card a{
+display:inline-block;
+margin-top:10px;
+padding:8px 14px;
+background:var(--accent);
+color:white;
+text-decoration:none;
+border-radius:8px;
+font-size:12px;
+font-weight:600;
+transition:all 0.2s;
+}
+
+.resource-card a:hover{
+opacity:0.9;
+}
+
+html.light .resource-card a{
+color:white;
+}
+
 footer{
 
 text-align:center;
@@ -385,6 +562,15 @@ padding:14px;
 }
 .timer{
 font-size:36px;
+}
+.hero{
+height:220px;
+}
+.hero-title{
+font-size:24px;
+}
+.hero-subtitle{
+font-size:14px;
 }
 }
 
@@ -411,6 +597,10 @@ Educational • Training • Performance
 
 </div>
 
+<div style="display:flex;gap:10px;align-items:center;">
+
+<button class="theme-toggle" onclick="toggleTheme()" id="themeBtn">🌙 Dark</button>
+
 <a
 class="small-link"
 href="about.html">
@@ -418,6 +608,8 @@ href="about.html">
 about
 
 </a>
+
+</div>
 
 </div>
 
@@ -455,25 +647,13 @@ Resources
 
 </header>
 
-<div style="
-position:relative;
-width:100%;
-max-height:280px;
-overflow:hidden;
-">
-
-  <img src="assets/pexels-emmali-5123222.webp"
-       alt="Freediving underwater"
-       style="width:100%;display:block;object-fit:cover;opacity:0.95">
-
-  <div style="
-    position:absolute;
-    top:0;left:0;right:0;bottom:0;
-    background:linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(7,17,31,0.8));
-  "></div>
-
+<div class="hero">
+<div class="hero-content">
+<h1 class="hero-title">Train Smart, Dive Safe</h1>
+<p class="hero-subtitle">Physics-based training tools for freediving education</p>
 </div>
-  
+</div>
+
 <div class="container">
 
 <!-- PHYSICS -->
@@ -1146,6 +1326,62 @@ Safety Notes
 
 </section>
 
+<!-- RESOURCES -->
+
+<section id="resources">
+
+<h2>Resources & References</h2>
+
+<p class="description">
+Trusted communities and organizations for freediving education, training, and safety.
+</p>
+
+<div class="grid">
+
+<div class="resource-card">
+
+<h4>freedivingbase</h4>
+
+<p>Community-driven database of freediving spots, conditions, and training information worldwide.</p>
+
+<a href="https://www.freedivingbase.com" target="_blank" rel="noopener noreferrer">Visit freedivingbase →</a>
+
+</div>
+
+<div class="resource-card">
+
+<h4>AIDA International</h4>
+
+<p>Premier international federation for freediving certification, competitions, and education standards.</p>
+
+<a href="https://www.aidainternational.org" target="_blank" rel="noopener noreferrer">Visit AIDA →</a>
+
+</div>
+
+<div class="resource-card">
+
+<h4>CMAS Freediving</h4>
+
+<p>World confederation standards for safe freediving training and certification worldwide.</p>
+
+<a href="https://www.cmas.org" target="_blank" rel="noopener noreferrer">Visit CMAS →</a>
+
+</div>
+
+<div class="resource-card">
+
+<h4>Find a Coach</h4>
+
+<p>Always train with a qualified instructor. Certified coaching is essential for safe progression.</p>
+
+<a href="#safety" onclick="document.getElementById('safety').scrollIntoView({behavior:'smooth'})">Review Safety →</a>
+
+</div>
+
+</div>
+
+</section>
+
 </div>
 
 <footer>
@@ -1155,6 +1391,40 @@ Freediving Training Toolkit — Educational Use Only • <a href="about.html" st
 </footer>
 
 <script>
+
+// ===== THEME TOGGLE =====
+
+function toggleTheme() {
+const html = document.documentElement;
+const btn = document.getElementById('themeBtn');
+
+if (html.classList.contains('light')) {
+html.classList.remove('light');
+localStorage.setItem('theme', 'dark');
+btn.textContent = '🌙 Dark';
+} else {
+html.classList.add('light');
+localStorage.setItem('theme', 'light');
+btn.textContent = '☀️ Light';
+}
+}
+
+// Load theme on page load
+document.addEventListener('DOMContentLoaded', function() {
+const savedTheme = localStorage.getItem('theme') || 'dark';
+const html = document.documentElement;
+const btn = document.getElementById('themeBtn');
+
+if (savedTheme === 'light') {
+html.classList.add('light');
+btn.textContent = '☀️ Light';
+} else {
+html.classList.remove('light');
+btn.textContent = '🌙 Dark';
+}
+
+updateLogUI();
+});
 
 // ===== PHYSICS =====
 
@@ -1431,9 +1701,6 @@ localStorage.removeItem('diveLogs');
 updateLogUI();
 }
 }
-
-// Initialize on page load
-document.addEventListener('DOMContentLoaded', updateLogUI);
 
 </script>
 
