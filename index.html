@@ -143,7 +143,7 @@ padding:14px;
 
 section{
 
-margin-bottom:16px;
+margin-bottom:28px;
 
 background:var(--panel);
 
@@ -152,14 +152,28 @@ border:
 
 border-radius:14px;
 
-padding:18px;
+padding:24px;
 
 }
 
 h2{
 
 margin-top:0;
+margin-bottom:20px;
 
+}
+
+h3{
+margin-top:0;
+margin-bottom:12px;
+font-size:16px;
+}
+
+.description{
+font-size:12px;
+color:var(--muted);
+margin-bottom:16px;
+line-height:1.5;
 }
 
 .grid{
@@ -177,15 +191,20 @@ gap:14px;
 
 background:var(--panel2);
 
-padding:14px;
+padding:18px;
 
 border-radius:12px;
+
+border:1px solid rgba(255,255,255,.04);
 
 }
 
 label{
 font-size:12px;
 color:var(--muted);
+display:block;
+margin-top:12px;
+margin-bottom:4px;
 }
 
 input,
@@ -195,9 +214,9 @@ select{
 
 width:100%;
 
-margin-top:6px;
+margin-top:4px;
 
-margin-bottom:10px;
+margin-bottom:12px;
 
 padding:10px;
 
@@ -210,6 +229,13 @@ background:#0a1628;
 
 color:white;
 
+font-family:inherit;
+
+}
+
+input::placeholder,
+textarea::placeholder{
+color:rgba(255,255,255,.3);
 }
 
 button{
@@ -217,6 +243,8 @@ button{
 cursor:pointer;
 
 background:#153153;
+
+margin-top:12px;
 
 }
 
@@ -226,7 +254,7 @@ border-color:var(--accent);
 
 .result{
 
-padding:10px;
+padding:12px;
 
 background:#07111f;
 
@@ -234,19 +262,33 @@ border-radius:10px;
 
 font-size:14px;
 
+border:1px solid var(--border);
+
+margin-top:12px;
+
 }
 
 .note{
 
-font-size:12px;
+font-size:11px;
 
 color:var(--muted);
+
+margin-top:12px;
 
 }
 
 .warning{
 
 color:var(--warn);
+
+padding:12px;
+
+background:rgba(255,107,107,.1);
+
+border-left:3px solid var(--warn);
+
+border-radius:6px;
 
 }
 
@@ -256,11 +298,15 @@ color:var(--ok);
 
 .timer{
 
-font-size:40px;
+font-size:48px;
 
 font-weight:bold;
 
 text-align:center;
+
+margin:20px 0;
+
+font-variant-numeric:tabular-nums;
 
 }
 
@@ -273,6 +319,8 @@ background:#07111f;
 border-radius:999px;
 
 overflow:hidden;
+
+margin:16px 0;
 
 }
 
@@ -294,17 +342,26 @@ width:100%;
 
 border-collapse:collapse;
 
+margin-top:12px;
+
 }
 
 td,th{
 
-padding:8px;
+padding:10px 8px;
 
 border-bottom:
 1px solid var(--border);
 
 font-size:13px;
 
+text-align:left;
+
+}
+
+th{
+font-weight:600;
+color:var(--accent);
 }
 
 footer{
@@ -317,6 +374,18 @@ color:var(--muted);
 
 font-size:12px;
 
+}
+
+@media(max-width:640px){
+section{
+padding:18px;
+}
+.card{
+padding:14px;
+}
+.timer{
+font-size:36px;
+}
 }
 
 </style>
@@ -389,11 +458,12 @@ Resources
 <div style="
 position:relative;
 width:100%;
-max-height:260px;
+max-height:280px;
 overflow:hidden;
 ">
 
   <img src="assets/pexels-emmali-5123222.webp"
+       alt="Freediving underwater"
        style="width:100%;display:block;object-fit:cover;opacity:0.95">
 
   <div style="
@@ -414,6 +484,10 @@ overflow:hidden;
 Physics Tools
 </h2>
 
+<p class="description">
+Understand pressure and gas behavior at depth using fundamental physics principles.
+</p>
+
 <div class="grid">
 
 <div class="card">
@@ -422,12 +496,19 @@ Physics Tools
 Depth → Pressure
 </h3>
 
+<p class="description">
+Calculate absolute pressure at depth.
+</p>
+
 <label>
 Depth (m)
 </label>
 
 <input
-id="depth">
+id="depth"
+type="number"
+placeholder="e.g., 20"
+min="0">
 
 <div
 class="result"
@@ -438,10 +519,7 @@ id="pressureResult">
 </div>
 
 <div class="note">
-
-Pressure approximation:
-P = depth / 10 + 1
-
+Uses approximation: P = depth / 10 + 1 (bar)
 </div>
 
 </div>
@@ -452,19 +530,29 @@ P = depth / 10 + 1
 Lung Compression
 </h3>
 
+<p class="description">
+See how lung volume shrinks with depth using Boyle's law.
+</p>
+
 <label>
 Surface Lung Volume (L)
 </label>
 
 <input
-id="lung">
+id="lung"
+type="number"
+placeholder="e.g., 6"
+min="0">
 
 <label>
 Depth (m)
 </label>
 
 <input
-id="lungDepth">
+id="lungDepth"
+type="number"
+placeholder="e.g., 20"
+min="0">
 
 <div
 class="result"
@@ -475,9 +563,7 @@ id="lungResult">
 </div>
 
 <div class="note">
-
-Boyle's law approximation.
-
+Boyle's law: PV = constant
 </div>
 
 </div>
@@ -485,20 +571,22 @@ Boyle's law approximation.
 <div class="card">
 
 <h3>
-Gas Reminder
+Gas Behavior Reference
 </h3>
 
-<div class="result">
+<p class="description">
+Quick reminder of how gases compress with increasing pressure.
+</p>
 
-PV = constant
+<div class="result" style="border:none;padding:14px;background:transparent;font-family:monospace;text-align:center;">
+
+<strong>PV = constant</strong>
 
 </div>
 
-<p class="note">
-
-Illustrates compression of gas volume with increasing ambient pressure.
-
-</p>
+<div class="note">
+As depth increases, pressure increases, and volume decreases proportionally.
+</div>
 
 </div>
 
@@ -516,35 +604,43 @@ Training Tools
 
 </h2>
 
+<p class="description">
+Build and execute CO₂ and O₂ tables, or track static apnea performance.
+</p>
+
 <div class="grid">
 
 <div class="card">
 
 <h3>
-CO₂ Table
+CO₂ Table Builder
 </h3>
 
-<label>
-Breath Hold
-</label>
-
-<input id="co2Hold">
+<p class="description">
+Generate a CO₂ table: fixed hold time, decreasing rest intervals.
+</p>
 
 <label>
-Rest
+Breath Hold (s)
 </label>
 
-<input id="co2Rest">
+<input id="co2Hold" type="number" placeholder="e.g., 60" min="1">
 
 <label>
-Rounds
+Rest Between (s)
 </label>
 
-<input id="co2Rounds">
+<input id="co2Rest" type="number" placeholder="e.g., 60" min="1">
+
+<label>
+Number of Rounds
+</label>
+
+<input id="co2Rounds" type="number" placeholder="e.g., 5" min="1">
 
 <button onclick="generateCO2()">
 
-Generate
+Generate Table
 
 </button>
 
@@ -554,43 +650,39 @@ id="co2Result">
 
 </div>
 
-<div class="note">
-
-Traditional structure:
-hold stable,
-rest decreases.
-
-</div>
-
 </div>
 
 <div class="card">
 
 <h3>
-O₂ Table
+O₂ Table Builder
 </h3>
 
-<label>
-Start Hold
-</label>
-
-<input id="o2Hold">
+<p class="description">
+Generate an O₂ table: decreasing hold time, fixed rest intervals.
+</p>
 
 <label>
-Rest
+Start Hold (s)
 </label>
 
-<input id="o2Rest">
+<input id="o2Hold" type="number" placeholder="e.g., 180" min="1">
 
 <label>
-Rounds
+Rest Between (s)
 </label>
 
-<input id="o2Rounds">
+<input id="o2Rest" type="number" placeholder="e.g., 60" min="1">
+
+<label>
+Number of Rounds
+</label>
+
+<input id="o2Rounds" type="number" placeholder="e.g., 5" min="1">
 
 <button onclick="generateO2()">
 
-Generate
+Generate Table
 
 </button>
 
@@ -609,6 +701,10 @@ id="o2Result">
 Static Apnea Timer
 
 </h3>
+
+<p class="description">
+Time your static apnea attempts with visual progress tracking.
+</p>
 
 <div
 class="timer"
@@ -635,7 +731,10 @@ Target Hold (seconds)
 </label>
 
 <input
-id="target">
+id="target"
+type="number"
+placeholder="e.g., 180"
+min="1">
 
 <button onclick="startTimer()">
 
@@ -677,25 +776,33 @@ Ready
 Performance Tools
 </h2>
 
+<p class="description">
+Plan dives, estimate descents/ascents, and prepare breathing routines.
+</p>
+
 <div class="grid">
 
 <div class="card">
 
 <h3>
-Depth ↔ Time
+Depth ↔ Time Calculator
 </h3>
+
+<p class="description">
+Estimate descent or ascent time given depth and speed.
+</p>
 
 <label>
 Depth (m)
 </label>
 
-<input id="perfDepth">
+<input id="perfDepth" type="number" placeholder="e.g., 30" min="0">
 
 <label>
 Average Speed (m/s)
 </label>
 
-<input id="perfSpeed">
+<input id="perfSpeed" type="number" placeholder="e.g., 0.5" min="0" step="0.1">
 
 <div
 class="result"
@@ -706,10 +813,7 @@ id="perfResult">
 </div>
 
 <div class="note">
-
-Simple estimate:
-time = depth ÷ speed
-
+Time = depth ÷ speed
 </div>
 
 </div>
@@ -720,17 +824,21 @@ time = depth ÷ speed
 Required Speed Planner
 </h3>
 
+<p class="description">
+Find the speed needed to reach a depth in a target time.
+</p>
+
 <label>
 Target Depth (m)
 </label>
 
-<input id="speedDepth">
+<input id="speedDepth" type="number" placeholder="e.g., 30" min="0">
 
 <label>
 Target Time (s)
 </label>
 
-<input id="speedTime">
+<input id="speedTime" type="number" placeholder="e.g., 60" min="1">
 
 <div
 class="result"
@@ -741,9 +849,7 @@ id="speedResult">
 </div>
 
 <div class="note">
-
-Useful to estimate descent / ascent pacing.
-
+Useful for planning descent and ascent pacing.
 </div>
 
 </div>
@@ -751,26 +857,30 @@ Useful to estimate descent / ascent pacing.
 <div class="card">
 
 <h3>
-Breath-up Timer
+Breath-up Routine
 </h3>
+
+<p class="description">
+Generate a relaxed breathing sequence before your dive.
+</p>
 
 <label>
 Inhale (s)
 </label>
 
-<input id="inhale">
+<input id="inhale" type="number" placeholder="e.g., 3" min="1" step="0.5">
 
 <label>
 Exhale (s)
 </label>
 
-<input id="exhale">
+<input id="exhale" type="number" placeholder="e.g., 3" min="1" step="0.5">
 
 <label>
-Cycles
+Number of Cycles
 </label>
 
-<input id="cycles">
+<input id="cycles" type="number" placeholder="e.g., 10" min="1">
 
 <button onclick="buildBreathup()">
 
@@ -787,9 +897,7 @@ id="breathResult">
 </div>
 
 <div class="note">
-
-Relaxed breathing only. Avoid hyperventilation.
-
+Relaxed breathing only. Never hyperventilate.
 </div>
 
 </div>
@@ -807,33 +915,43 @@ Relaxed breathing only. Avoid hyperventilation.
 Training Session Planner
 </h2>
 
+<p class="description">
+Organize your training day with a simple time-based structure.
+</p>
+
 <div class="grid">
 
 <div class="card">
+
+<h3>Build a Session</h3>
+
+<p class="description">
+Input block durations to create a training timeline.
+</p>
 
 <label>
 Warm-up (min)
 </label>
 
-<input id="warmup">
+<input id="warmup" type="number" placeholder="e.g., 10" min="0">
 
 <label>
 CO₂ Block (min)
 </label>
 
-<input id="plannerCo2">
+<input id="plannerCo2" type="number" placeholder="e.g., 15" min="0">
 
 <label>
 O₂ Block (min)
 </label>
 
-<input id="plannerO2">
+<input id="plannerO2" type="number" placeholder="e.g., 20" min="0">
 
 <label>
 Max Attempt (min)
 </label>
 
-<input id="plannerMax">
+<input id="plannerMax" type="number" placeholder="e.g., 10" min="0">
 
 <button onclick="buildSession()">
 
@@ -853,14 +971,12 @@ Timeline
 class="result"
 id="sessionResult">
 
-Build a session
+Build a session above
 
 </div>
 
 <div class="note">
-
-General structure helper. Not a coaching system.
-
+General structure helper. Always follow your coach's guidance.
 </div>
 
 </div>
@@ -880,25 +996,31 @@ Dive Log
 
 </h2>
 
+<p class="description">
+Record your dives and track personal statistics over time.
+</p>
+
 <div class="grid">
 
 <div class="card">
 
-<label>
-
-Depth
-
-</label>
-
-<input id="logDepth">
+<h3>Log a Dive</h3>
 
 <label>
 
-Time
+Depth (m)
 
 </label>
 
-<input id="logTime">
+<input id="logDepth" type="number" placeholder="e.g., 25" min="0">
+
+<label>
+
+Time (s)
+
+</label>
+
+<input id="logTime" type="number" placeholder="e.g., 120" min="1">
 
 <label>
 
@@ -907,7 +1029,9 @@ Notes
 </label>
 
 <textarea
-id="logNote">
+id="logNote"
+placeholder="How did it feel? Any observations?"
+rows="4">
 
 </textarea>
 
@@ -932,7 +1056,7 @@ Statistics
 class="result"
 id="stats">
 
-No dives
+No dives logged yet
 
 </div>
 
@@ -955,9 +1079,9 @@ Empty
 
 </div>
 
-<button onclick="clearLogs()">
+<button onclick="clearLogs()" style="margin-top:12px;">
 
-Clear
+Clear All
 
 </button>
 
@@ -980,798 +1104,338 @@ Safety Notes
 
 <div class="warning">
 
-Freediving involves risk including blackout,
-loss of motor control and drowning.
+<strong>⚠ Freediving involves serious risks</strong> including blackout, loss of motor control, and drowning.
 
 </div>
 
 <br>
 
-<ul>
+<ul style="line-height:1.8;font-size:14px;">
 
 <li>
 
-Educational only
+<strong>Educational tool only.</strong> This toolkit is not a substitute for certified training and supervision.
 
 </li>
 
 <li>
 
-Not a medical device
+<strong>Never train alone.</strong> Always dive with a trained partner and follow established safety protocols.
 
 </li>
 
 <li>
 
-Not a training certification substitute
-
-</li>
-
-</ul>
-
-<h3>
-
-This tool intentionally excludes:
-
-</h3>
-
-<ul>
-
-<li>
-
-Danger score simulation
+<strong>No medical device.</strong> This tool does not predict or prevent blackout or any medical emergency.
 
 </li>
 
 <li>
 
-PP O₂ calculations
+<strong>Hyperventilation risk.</strong> Never hyperventilate before breath-holds.
 
 </li>
 
 <li>
 
-Hypoxia prediction
-
-</li>
-
-<li>
-
-Medical recommendations
+<strong>Follow your coach.</strong> Your instructor's guidance always supersedes any calculator or table.
 
 </li>
 
 </ul>
-
-<p class="note">
-
-Train with certified supervision.
-
-</p>
 
 </section>
 
-
-<!-- RESOURCES -->
-
-<section id="resources">
-
-<h2>Resources</h2>
-
-<div class="grid">
-
-<div class="card">
-
-<h3>Training Agencies</h3>
-
-<p>
-<a href="https://www.aidainternational.org" target="_blank">AIDA International</a>
-</p>
-
-<p>
-<a href="https://www.divessi.com" target="_blank">SSI Freediving</a>
-</p>
-
-<p>
-<a href="https://www.molchanovs.com" target="_blank">Molchanovs</a>
-</p>
-
-<p>
-<a href="https://www.cmas.org" target="_blank">CMAS</a>
-</p>
-
 </div>
-
-
-<div class="card">
-
-<h3>Discover Schools</h3>
-
-<p>
-<a href="https://freedivingbase.com" target="_blank">freedivingbase</a>
-</p>
-
-<p class="note">
-Database of schools and destinations.
-</p>
-
-</div>
-
-
-<div class="card">
-
-<h3>Recommended Topics</h3>
-
-<ul>
-
-<li>Relaxation</li>
-<li>Equalization</li>
-<li>Recovery breathing</li>
-<li>Training periodization</li>
-<li>Buddy procedures</li>
-
-</ul>
-
-</div>
-
-</div>
-
-</section>
 
 <footer>
 
-Freediving Training Toolkit
+Freediving Training Toolkit — Educational Use Only • <a href="about.html" style="color:var(--muted);text-decoration:none;">About</a>
 
 </footer>
 
 <script>
 
-const format=s=>{
+// ===== PHYSICS =====
 
-const m=Math.floor(s/60);
-
-const sec=s%60;
-
-return String(m).padStart(2,"0")
-+
-":"
-+
-String(sec).padStart(2,"0");
-
-};
-
-const q=id=>
-document.getElementById(id);
-
-const dives=
-JSON.parse(
-localStorage.getItem(
-"dives"
-)||"[]");
-
-function set(id,value){
-q(id).innerHTML=value;
+document.getElementById('depth')?.addEventListener('input', function() {
+const depth = parseFloat(this.value);
+if (!isNaN(depth) && depth >= 0) {
+const pressure = (depth / 10) + 1;
+document.getElementById('pressureResult').textContent = `${pressure.toFixed(2)} bar`;
 }
-
-
-/* ---------- PHYSICS ---------- */
-
-function updatePhysics(){
-
-const d=
-Number(
-q("depth").value
-);
-
-if(d>=0){
-
-set(
-"pressureResult",
-(d/10+1).toFixed(2)
-+" bar"
-);
-
-}
-
-const lung=
-Number(
-q("lung").value
-);
-
-const depth=
-Number(
-q("lungDepth").value
-);
-
-if(
-lung>0 &&
-depth>=0
-){
-
-const v=
-lung/
-(
-1+
-depth/10
-);
-
-set(
-"lungResult",
-v.toFixed(2)
-+" L"
-);
-
-}
-
-}
-
-q("depth").oninput=
-updatePhysics;
-
-q("lung").oninput=
-updatePhysics;
-
-q("lungDepth").oninput=
-updatePhysics;
-
-
-/* ---------- CO2 ---------- */
-
-function generateCO2(){
-
-const hold=
-Number(
-q("co2Hold").value
-);
-
-const rest=
-Number(
-q("co2Rest").value
-);
-
-const rounds=
-Number(
-q("co2Rounds").value
-);
-
-let html=
-"<table>";
-
-for(
-let i=0;
-i<rounds;
-i++
-){
-
-const r=
-Math.max(
-20,
-rest-(i*15)
-);
-
-html+=`
-<tr>
-<td>${i+1}</td>
-<td>Hold ${hold}s</td>
-<td>Rest ${r}s</td>
-</tr>
-`;
-
-}
-
-html+="</table>";
-
-set(
-"co2Result",
-html
-);
-
-}
-
-
-/* ---------- O2 ---------- */
-
-function generateO2(){
-
-const hold=
-Number(
-q("o2Hold").value
-);
-
-const rest=
-Number(
-q("o2Rest").value
-);
-
-const rounds=
-Number(
-q("o2Rounds").value
-);
-
-let html=
-"<table>";
-
-for(
-let i=0;
-i<rounds;
-i++
-){
-
-const h=
-hold+
-(
-i*10
-);
-
-html+=`
-<tr>
-<td>${i+1}</td>
-<td>Hold ${h}s</td>
-<td>Rest ${rest}s</td>
-</tr>
-`;
-
-}
-
-html+="</table>";
-
-set(
-"o2Result",
-html
-);
-
-}
-
-
-/* ---------- STA ---------- */
-
-let sec=0;
-
-let interval=null;
-
-function updateTimer(){
-
-sec++;
-
-q(
-"timer"
-).innerText=
-format(sec);
-
-const target=
-Number(
-q(
-"target"
-).value
-);
-
-if(
-target>0
-){
-
-const p=
-Math.min(
-100,
-(
-sec/
-target
-)*100
-);
-
-q(
-"progress"
-).style.width=
-p+"%";
-
-if(
-p>=90
-){
-
-set(
-"marker",
-"Last effort zone"
-);
-
-}
-
-else if(
-p>=75
-){
-
-set(
-"marker",
-"75%"
-);
-
-}
-
-else if(
-p>=50
-){
-
-set(
-"marker",
-"50%"
-);
-
-}
-
-}
-
-}
-
-function startTimer(){
-
-if(interval)
-return;
-
-interval=
-setInterval(
-updateTimer,
-1000
-);
-
-}
-
-function pauseTimer(){
-
-clearInterval(
-interval
-);
-
-interval=null;
-
-}
-
-function resetTimer(){
-
-pauseTimer();
-
-sec=0;
-
-q(
-"timer"
-).innerText=
-"00:00";
-
-q(
-"progress"
-).style.width=
-"0%";
-
-set(
-"marker",
-"Ready"
-);
-
-}
-
-
-/* ---------- PERFORMANCE ---------- */
-
-function updatePerf(){
-
-const d=
-Number(
-q(
-"perfDepth"
-).value
-);
-
-const s=
-Number(
-q(
-"perfSpeed"
-).value
-);
-
-if(
-d>0 &&
-s>0
-){
-
-set(
-"perfResult",
-
-format(
-Math.round(
-d/s
-)
-)
-
-);
-
-}
-
-}
-
-q(
-"perfDepth"
-).oninput=
-updatePerf;
-
-q(
-"perfSpeed"
-).oninput=
-updatePerf;
-
-
-function updateSpeed(){
-
-const d=
-Number(
-q(
-"speedDepth"
-).value
-);
-
-const t=
-Number(
-q(
-"speedTime"
-).value
-);
-
-if(
-d>0 &&
-t>0
-){
-
-set(
-"speedResult",
-
-(
-d/t
-).toFixed(2)
-+
-" m/s"
-
-);
-
-}
-
-}
-
-q(
-"speedDepth"
-).oninput=
-updateSpeed;
-
-q(
-"speedTime"
-).oninput=
-updateSpeed;
-
-
-/* ---------- BREATHUP ---------- */
-
-function buildBreathup(){
-
-const i=
-q(
-"inhale"
-).value;
-
-const e=
-q(
-"exhale"
-).value;
-
-const c=
-q(
-"cycles"
-).value;
-
-let txt="";
-
-for(
-let x=1;
-x<=c;
-x++
-){
-
-txt+=
-`
-${x}.
-In ${i}s
-→
-Out ${e}s
-<br>
-`;
-
-}
-
-set(
-"breathResult",
-txt
-);
-
-}
-
-
-/* ---------- SESSION ---------- */
-
-function buildSession(){
-
-const w=
-q(
-"warmup"
-).value;
-
-const c=
-q(
-"plannerCo2"
-).value;
-
-const o=
-q(
-"plannerO2"
-).value;
-
-const m=
-q(
-"plannerMax"
-).value;
-
-set(
-"sessionResult",
-
-`
-Warm-up
-→ ${w} min
-
-<br><br>
-
-CO₂
-→ ${c} min
-
-<br><br>
-
-O₂
-→ ${o} min
-
-<br><br>
-
-Max
-→ ${m} min
-`
-
-);
-
-}
-
-
-/* ---------- LOG ---------- */
-
-function saveDive(){
-
-dives.push({
-
-date:
-new Date()
-.toLocaleDateString(),
-
-depth:
-q(
-"logDepth"
-).value,
-
-time:
-q(
-"logTime"
-).value,
-
-note:
-q(
-"logNote"
-).value
-
 });
 
-localStorage
-.setItem(
-"dives",
-JSON.stringify(
-dives
-)
-);
+document.getElementById('lung')?.addEventListener('input', calculate);
+document.getElementById('lungDepth')?.addEventListener('input', calculate);
 
-renderLogs();
-
+function calculate() {
+const lung = parseFloat(document.getElementById('lung').value);
+const depth = parseFloat(document.getElementById('lungDepth').value);
+if (!isNaN(lung) && !isNaN(depth) && lung > 0 && depth >= 0) {
+const pressure = (depth / 10) + 1;
+const volume = lung / pressure;
+document.getElementById('lungResult').textContent = `${volume.toFixed(2)} L at ${depth}m`;
+}
 }
 
+// ===== TRAINING =====
 
-function renderLogs(){
+function generateCO2() {
+const hold = parseInt(document.getElementById('co2Hold').value);
+const rest = parseInt(document.getElementById('co2Rest').value);
+const rounds = parseInt(document.getElementById('co2Rounds').value);
 
-if(
-!dives.length
-){
-
-set(
-"history",
-"Empty"
-);
-
+if (isNaN(hold) || isNaN(rest) || isNaN(rounds) || hold < 1 || rest < 1 || rounds < 1) {
+document.getElementById('co2Result').textContent = 'Enter valid values';
 return;
-
 }
 
-let html="";
+let table = '<table><tr><th>Round</th><th>Hold</th><th>Rest</th></tr>';
+for (let i = 1; i <= rounds; i++) {
+table += `<tr><td>${i}</td><td>${hold}s</td><td>${rest}s</td></tr>`;
+}
+table += '</table>';
+document.getElementById('co2Result').innerHTML = table;
+}
 
-let pb=0;
+function generateO2() {
+const hold = parseInt(document.getElementById('o2Hold').value);
+const rest = parseInt(document.getElementById('o2Rest').value);
+const rounds = parseInt(document.getElementById('o2Rounds').value);
 
-let total=0;
+if (isNaN(hold) || isNaN(rest) || isNaN(rounds) || hold < 1 || rest < 1 || rounds < 1) {
+document.getElementById('o2Result').textContent = 'Enter valid values';
+return;
+}
 
-dives.forEach(d=>{
+let table = '<table><tr><th>Round</th><th>Hold</th><th>Rest</th></tr>';
+for (let i = 1; i <= rounds; i++) {
+const roundHold = Math.max(10, hold - (i - 1) * Math.ceil(hold / (rounds + 1)));
+table += `<tr><td>${i}</td><td>${roundHold}s</td><td>${rest}s</td></tr>`;
+}
+table += '</table>';
+document.getElementById('o2Result').innerHTML = table;
+}
 
-pb=
-Math.max(
-pb,
-Number(
-d.depth
-)
-);
+let timerInterval;
+let timerRunning = false;
+let elapsed = 0;
 
-total+=
-Number(
-d.depth
-);
+function startTimer() {
+const target = parseInt(document.getElementById('target').value);
+if (isNaN(target) || target < 1) {
+document.getElementById('marker').textContent = 'Enter target time';
+return;
+}
 
-html+=
-`
-${d.date}
-—
-${d.depth}m
-—
-${d.time}s
-<br>
-`;
+if (timerRunning) return;
+timerRunning = true;
 
+timerInterval = setInterval(() => {
+elapsed++;
+const minutes = Math.floor(elapsed / 60);
+const seconds = elapsed % 60;
+document.getElementById('timer').textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+const percent = (elapsed / target) * 100;
+document.getElementById('progress').style.width = percent + '%';
+
+if (elapsed >= target) {
+clearInterval(timerInterval);
+timerRunning = false;
+document.getElementById('marker').textContent = '✓ Target reached';
+document.getElementById('marker').className = 'result ok';
+}
+}, 1000);
+}
+
+function pauseTimer() {
+clearInterval(timerInterval);
+timerRunning = false;
+document.getElementById('marker').textContent = 'Paused';
+}
+
+function resetTimer() {
+clearInterval(timerInterval);
+timerRunning = false;
+elapsed = 0;
+document.getElementById('timer').textContent = '00:00';
+document.getElementById('progress').style.width = '0%';
+document.getElementById('marker').textContent = 'Ready';
+document.getElementById('marker').className = 'result';
+}
+
+// ===== PERFORMANCE =====
+
+document.getElementById('perfDepth')?.addEventListener('input', function() {
+const depth = parseFloat(document.getElementById('perfDepth').value);
+const speed = parseFloat(document.getElementById('perfSpeed').value);
+if (!isNaN(depth) && !isNaN(speed) && depth >= 0 && speed > 0) {
+const time = depth / speed;
+document.getElementById('perfResult').textContent = `${time.toFixed(1)} seconds`;
+}
 });
 
-set(
-"history",
-html
-);
+document.getElementById('perfSpeed')?.addEventListener('input', function() {
+const depth = parseFloat(document.getElementById('perfDepth').value);
+const speed = parseFloat(this.value);
+if (!isNaN(depth) && !isNaN(speed) && depth >= 0 && speed > 0) {
+const time = depth / speed;
+document.getElementById('perfResult').textContent = `${time.toFixed(1)} seconds`;
+}
+});
 
-set(
-"stats",
+document.getElementById('speedDepth')?.addEventListener('input', function() {
+const depth = parseFloat(this.value);
+const time = parseFloat(document.getElementById('speedTime').value);
+if (!isNaN(depth) && !isNaN(time) && depth >= 0 && time > 0) {
+const speed = depth / time;
+document.getElementById('speedResult').textContent = `${speed.toFixed(2)} m/s`;
+}
+});
 
-`
-PB:
-${pb} m
+document.getElementById('speedTime')?.addEventListener('input', function() {
+const time = parseFloat(this.value);
+const depth = parseFloat(document.getElementById('speedDepth').value);
+if (!isNaN(depth) && !isNaN(time) && depth >= 0 && time > 0) {
+const speed = depth / time;
+document.getElementById('speedResult').textContent = `${speed.toFixed(2)} m/s`;
+}
+});
 
-<br>
+function buildBreathup() {
+const inhale = parseFloat(document.getElementById('inhale').value);
+const exhale = parseFloat(document.getElementById('exhale').value);
+const cycles = parseInt(document.getElementById('cycles').value);
 
-Average:
-${(
-total/
-dives.length
-).toFixed(1)
-} m
-
-`
-
-);
-
+if (isNaN(inhale) || isNaN(exhale) || isNaN(cycles) || inhale < 0.5 || exhale < 0.5 || cycles < 1) {
+document.getElementById('breathResult').textContent = 'Enter valid values';
+return;
 }
 
-function clearLogs(){
+const total = (inhale + exhale) * cycles;
+const mins = Math.floor(total / 60);
+const secs = Math.round(total % 60);
 
-localStorage
-.removeItem(
-"dives"
-);
-
-location.reload();
-
+let html = `<strong>${cycles} cycles:</strong><br>Inhale ${inhale}s, Exhale ${exhale}s<br><br>Total time: ${mins}m ${secs}s`;
+document.getElementById('breathResult').innerHTML = html;
 }
 
-renderLogs();
+// ===== PLANNER =====
+
+function buildSession() {
+const warmup = parseFloat(document.getElementById('warmup').value) || 0;
+const co2 = parseFloat(document.getElementById('plannerCo2').value) || 0;
+const o2 = parseFloat(document.getElementById('plannerO2').value) || 0;
+const max = parseFloat(document.getElementById('plannerMax').value) || 0;
+
+const total = warmup + co2 + o2 + max;
+
+if (total === 0) {
+document.getElementById('sessionResult').textContent = 'Enter durations to build session';
+return;
+}
+
+let startTime = 0;
+let html = '<table><tr><th>Block</th><th>Start</th><th>Duration</th><th>End</th></tr>';
+
+if (warmup > 0) {
+html += `<tr><td>Warm-up</td><td>0:00</td><td>${warmup} min</td><td>${warmup}:00</td></tr>`;
+startTime += warmup;
+}
+
+if (co2 > 0) {
+const end = startTime + co2;
+html += `<tr><td>CO₂ Block</td><td>${startTime}:00</td><td>${co2} min</td><td>${end}:00</td></tr>`;
+startTime += co2;
+}
+
+if (o2 > 0) {
+const end = startTime + o2;
+html += `<tr><td>O₂ Block</td><td>${startTime}:00</td><td>${o2} min</td><td>${end}:00</td></tr>`;
+startTime += o2;
+}
+
+if (max > 0) {
+const end = startTime + max;
+html += `<tr><td>Max Attempt</td><td>${startTime}:00</td><td>${max} min</td><td>${end}:00</td></tr>`;
+}
+
+html += '</table>';
+html += `<br><strong>Total: ${total} minutes</strong>`;
+
+document.getElementById('sessionResult').innerHTML = html;
+}
+
+// ===== DIVE LOG =====
+
+function saveDive() {
+const depth = parseFloat(document.getElementById('logDepth').value);
+const time = parseFloat(document.getElementById('logTime').value);
+const note = document.getElementById('logNote').value.trim();
+
+if (isNaN(depth) || isNaN(time) || depth < 0 || time < 1) {
+alert('Enter valid depth and time');
+return;
+}
+
+let logs = JSON.parse(localStorage.getItem('diveLogs') || '[]');
+logs.push({
+depth,
+time,
+note,
+date: new Date().toLocaleString()
+});
+localStorage.setItem('diveLogs', JSON.stringify(logs));
+
+document.getElementById('logDepth').value = '';
+document.getElementById('logTime').value = '';
+document.getElementById('logNote').value = '';
+
+updateLogUI();
+}
+
+function updateLogUI() {
+let logs = JSON.parse(localStorage.getItem('diveLogs') || '[]');
+
+if (logs.length === 0) {
+document.getElementById('stats').textContent = 'No dives logged yet';
+document.getElementById('history').textContent = 'Empty';
+return;
+}
+
+const maxDepth = Math.max(...logs.map(l => l.depth));
+const avgTime = (logs.reduce((sum, l) => sum + l.time, 0) / logs.length).toFixed(0);
+const avgDepth = (logs.reduce((sum, l) => sum + l.depth, 0) / logs.length).toFixed(1);
+
+document.getElementById('stats').innerHTML = `
+<strong>${logs.length}</strong> dives logged<br>
+Max depth: <strong>${maxDepth}m</strong><br>
+Avg depth: <strong>${avgDepth}m</strong><br>
+Avg time: <strong>${avgTime}s</strong>
+`;
+
+let historyHtml = '<table><tr><th>Date</th><th>Depth</th><th>Time</th><th>Note</th></tr>';
+logs.slice().reverse().forEach(log => {
+const note = log.note ? log.note.substring(0, 30) + (log.note.length > 30 ? '...' : '') : '—';
+historyHtml += `<tr><td style="font-size:11px;">${log.date}</td><td>${log.depth}m</td><td>${log.time}s</td><td style="font-size:12px;">${note}</td></tr>`;
+});
+historyHtml += '</table>';
+document.getElementById('history').innerHTML = historyHtml;
+}
+
+function clearLogs() {
+if (confirm('Clear all dive logs? This cannot be undone.')) {
+localStorage.removeItem('diveLogs');
+updateLogUI();
+}
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', updateLogUI);
 
 </script>
 
 </body>
 </html>
-
-
