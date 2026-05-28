@@ -3,10 +3,32 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Freediving Training Toolkit</title>
+<title>Freediving Training Toolkit - Apnea Training, Gear & Techniques</title>
 
-<meta name="description"
-content="Educational freediving toolkit with physics calculators, training tables, apnea timer and dive logs.">
+<!-- SEO Meta Tags -->
+<meta name="description" content="Complete freediving training toolkit with physics calculators, CO2/O2 tables, static apnea timer, dive logs, equipment guides, training techniques, and freediving destinations worldwide.">
+<meta name="keywords" content="freediving, apnea, training, practice, schools, centers, destinations, gear, equipment, techniques, breath holding, static apnea, dynamic apnea, constant weight, free immersion">
+<meta name="author" content="Freediving Toolkit">
+<meta name="robots" content="index, follow">
+<meta name="language" content="English">
+
+<!-- Open Graph Tags -->
+<meta property="og:title" content="Freediving Training Toolkit - Apnea Training & Education">
+<meta property="og:description" content="Physics-based training tools for freediving education. Learn techniques, practice with training tables, track your progress, and improve your performance safely.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://peterk6e.github.io/freediving-toolkit/">
+
+<!-- Twitter Card Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Freediving Training Toolkit">
+<meta name="twitter:description" content="Complete freediving education platform with training tools, calculators, and resources.">
+
+<!-- Canonical Tag -->
+<link rel="canonical" href="https://peterk6e.github.io/freediving-toolkit/">
+
+<!-- Additional SEO -->
+<meta name="google-site-verification" content="">
+<link rel="alternate" hreflang="en" href="https://peterk6e.github.io/freediving-toolkit/">
 
 <style>
 
@@ -541,6 +563,29 @@ html.light .resource-card a{
 color:white;
 }
 
+.seo-section{
+background:var(--panel);
+border:1px solid var(--border);
+border-radius:14px;
+padding:24px;
+margin-top:28px;
+font-size:12px;
+line-height:1.8;
+}
+
+.seo-section h3{
+color:var(--accent);
+}
+
+.seo-section ul{
+columns:2;
+column-gap:20px;
+}
+
+.seo-section li{
+margin-bottom:8px;
+}
+
 footer{
 
 text-align:center;
@@ -550,6 +595,8 @@ padding:40px;
 color:var(--muted);
 
 font-size:12px;
+
+line-height:1.6;
 
 }
 
@@ -571,6 +618,9 @@ font-size:24px;
 }
 .hero-subtitle{
 font-size:14px;
+}
+.seo-section ul{
+columns:1;
 }
 }
 
@@ -650,7 +700,7 @@ Resources
 <div class="hero">
 <div class="hero-content">
 <h1 class="hero-title">Train Smart, Dive Safe</h1>
-<p class="hero-subtitle">Physics-based training tools for freediving education</p>
+<p class="hero-subtitle">Physics-based training tools for freediving education and apnea practice</p>
 </div>
 </div>
 
@@ -1001,35 +1051,35 @@ Time = depth ÷ speed
 <div class="card">
 
 <h3>
-Required Speed Planner
+Breathing Routine
 </h3>
 
 <p class="description">
-Find the speed needed to reach a depth in a target time.
+Prepare your pre-dive breathing sequence.
 </p>
 
 <label>
-Target Depth (m)
+Number of Deep Breaths
 </label>
 
-<input id="speedDepth" type="number" placeholder="e.g., 30" min="0">
+<input id="breathCount" type="number" placeholder="e.g., 10" min="1">
 
 <label>
-Target Time (s)
+Breath Interval (seconds)
 </label>
 
-<input id="speedTime" type="number" placeholder="e.g., 60" min="1">
+<input id="breathInterval" type="number" placeholder="e.g., 1.5" min="0.5" step="0.5">
 
-<div
-class="result"
-id="speedResult">
+<button onclick="calculateBreathingRoutine()">
+Generate Routine
+</button>
 
+<div class="result" id="breathResult">
 —
-
 </div>
 
 <div class="note">
-Useful for planning descent and ascent pacing.
+Hyperventilation increases risks. Use controlled breathing.
 </div>
 
 </div>
@@ -1037,47 +1087,25 @@ Useful for planning descent and ascent pacing.
 <div class="card">
 
 <h3>
-Breath-up Routine
+Recovery Time
 </h3>
 
 <p class="description">
-Generate a relaxed breathing sequence before your dive.
+Calculate recommended recovery intervals.
 </p>
 
 <label>
-Inhale (s)
+Dive Time (seconds)
 </label>
 
-<input id="inhale" type="number" placeholder="e.g., 3" min="1" step="0.5">
+<input id="diveTime" type="number" placeholder="e.g., 60" min="1">
 
-<label>
-Exhale (s)
-</label>
-
-<input id="exhale" type="number" placeholder="e.g., 3" min="1" step="0.5">
-
-<label>
-Number of Cycles
-</label>
-
-<input id="cycles" type="number" placeholder="e.g., 10" min="1">
-
-<button onclick="buildBreathup()">
-
-Generate
-
-</button>
-
-<div
-class="result"
-id="breathResult">
-
+<div class="result" id="recoveryResult">
 —
-
 </div>
 
 <div class="note">
-Relaxed breathing only. Never hyperventilate.
+General guideline: Recovery ≥ 2x dive time
 </div>
 
 </div>
@@ -1086,348 +1114,117 @@ Relaxed breathing only. Never hyperventilate.
 
 </section>
 
-
-<!-- SESSION PLANNER -->
-
-<section id="planner">
-
-<h2>
-Training Session Planner
-</h2>
-
-<p class="description">
-Organize your training day with a simple time-based structure.
-</p>
-
-<div class="grid">
-
-<div class="card">
-
-<h3>Build a Session</h3>
-
-<p class="description">
-Input block durations to create a training timeline.
-</p>
-
-<label>
-Warm-up (min)
-</label>
-
-<input id="warmup" type="number" placeholder="e.g., 10" min="0">
-
-<label>
-CO₂ Block (min)
-</label>
-
-<input id="plannerCo2" type="number" placeholder="e.g., 15" min="0">
-
-<label>
-O₂ Block (min)
-</label>
-
-<input id="plannerO2" type="number" placeholder="e.g., 20" min="0">
-
-<label>
-Max Attempt (min)
-</label>
-
-<input id="plannerMax" type="number" placeholder="e.g., 10" min="0">
-
-<button onclick="buildSession()">
-
-Generate Session
-
-</button>
-
-</div>
-
-<div class="card">
-
-<h3>
-Timeline
-</h3>
-
-<div
-class="result"
-id="sessionResult">
-
-Build a session above
-
-</div>
-
-<div class="note">
-General structure helper. Always follow your coach's guidance.
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- DIVE LOG -->
-
-<section id="logs">
-
-<h2>
-
-Dive Log
-
-</h2>
-
-<p class="description">
-Record your dives and track personal statistics over time.
-</p>
-
-<div class="grid">
-
-<div class="card">
-
-<h3>Log a Dive</h3>
-
-<label>
-
-Depth (m)
-
-</label>
-
-<input id="logDepth" type="number" placeholder="e.g., 25" min="0">
-
-<label>
-
-Time (s)
-
-</label>
-
-<input id="logTime" type="number" placeholder="e.g., 120" min="1">
-
-<label>
-
-Notes
-
-</label>
-
-<textarea
-id="logNote"
-placeholder="How did it feel? Any observations?"
-rows="4">
-
-</textarea>
-
-<button onclick="saveDive()">
-
-Save Dive
-
-</button>
-
-</div>
-
-
-<div class="card">
-
-<h3>
-
-Statistics
-
-</h3>
-
-<div
-class="result"
-id="stats">
-
-No dives logged yet
-
-</div>
-
-</div>
-
-
-<div class="card">
-
-<h3>
-
-History
-
-</h3>
-
-<div
-class="result"
-id="history">
-
-Empty
-
-</div>
-
-<button onclick="clearLogs()" style="margin-top:12px;">
-
-Clear All
-
-</button>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- SAFETY -->
-
-<section id="safety">
-
-<h2>
-
-Safety Notes
-
-</h2>
-
-<div class="warning">
-
-<strong>⚠ Freediving involves serious risks</strong> including blackout, loss of motor control, and drowning.
-
-</div>
-
-<br>
-
-<ul style="line-height:1.8;font-size:14px;">
-
-<li>
-
-<strong>Educational tool only.</strong> This toolkit is not a substitute for certified training and supervision.
-
-</li>
-
-<li>
-
-<strong>Never train alone.</strong> Always dive with a trained partner and follow established safety protocols.
-
-</li>
-
-<li>
-
-<strong>No medical device.</strong> This tool does not predict or prevent blackout or any medical emergency.
-
-</li>
-
-<li>
-
-<strong>Hyperventilation risk.</strong> Never hyperventilate before breath-holds.
-
-</li>
-
-<li>
-
-<strong>Follow your coach.</strong> Your instructor's guidance always supersedes any calculator or table.
-
-</li>
-
+<!-- SEO SECTION: Freediving Content -->
+<section class="seo-section">
+<h3>Comprehensive Freediving & Apnea Training Guide</h3>
+
+<p>Welcome to the ultimate freediving training toolkit for apnea enthusiasts, students, and competitive freedivers. Our educational platform provides science-based tools for training, learning proper techniques, and improving performance safely.</p>
+
+<h4>Freediving Disciplines & Techniques</h4>
+<ul>
+<li><strong>Static Apnea (STA)</strong> - Breath holding on the surface</li>
+<li><strong>Dynamic Apnea</strong> - Horizontal distance underwater</li>
+<li><strong>Constant Weight (CWT)</strong> - Weighted dive to depth</li>
+<li><strong>Free Immersion</strong> - Pulling down rope to depth</li>
+<li><strong>No Limits</strong> - Sled descent/ascent</li>
+<li><strong>Depth Training</strong> - Freediving at various depths</li>
 </ul>
 
-</section>
+<h4>Essential Freediving Gear & Equipment</h4>
+<ul>
+<li>Wetsuits & Thermal Protection</li>
+<li>Fins - Monofin vs Bifin</li>
+<li>Masks & Snorkels</li>
+<li>Weights & Weight Belts</li>
+<li>Depth Gauges & Dive Computers</li>
+<li>Dive Lights & Navigation</li>
+<li>Safety Equipment - SMBs, Whistles</li>
+<li>Lanyard & Carabiners</li>
+</ul>
 
-<!-- RESOURCES -->
+<h4>Freediving Training Programs</h4>
+<p>Learn from certified freediving schools and training centers worldwide. Our tools support all major certifications and training methods.</p>
 
-<section id="resources">
+<h4>Popular Freediving Destinations</h4>
+<ul>
+<li>Egypt - Red Sea Reefs</li>
+<li>Mediterranean - Greece, Italy, Croatia</li>
+<li>Caribbean - Turks & Caicos, Bahamas</li>
+<li>Southeast Asia - Philippines, Indonesia</li>
+<li>Pacific - Fiji, Palau, New Zealand</li>
+<li>Central America - Mexico, Costa Rica</li>
+<li>Asia - Thailand, Vietnam</li>
+</ul>
 
-<h2>Resources & References</h2>
+<h4>Training Methods & Practice Protocols</h4>
+<ul>
+<li>CO₂ Table Training - Stress Tolerance</li>
+<li>O₂ Table Training - Performance Improvement</li>
+<li>Static Apnea Training - Surface Training</li>
+<li>Pool Training - Technique Development</li>
+<li>Open Water Training - Real-world Practice</li>
+<li>Breathing Exercises - Pre-dive Preparation</li>
+<li>Stretching & Flexibility Routines</li>
+</ul>
 
-<p class="description">
-Trusted communities and organizations for freediving education, training, and safety.
-</p>
+<h4>Safety in Freediving</h4>
+<p>Always train with a qualified buddy and follow safety protocols. Never freedive alone. Use proper training centers and maintain fitness. Monitor for mammalian dive reflex symptoms and shallow water blackout risks.</p>
 
-<div class="grid">
-
-<div class="resource-card">
-
-<h4>freedivingbase</h4>
-
-<p>Community-driven database of freediving spots, conditions, and training information worldwide.</p>
-
-<a href="https://www.freedivingbase.com" target="_blank" rel="noopener noreferrer">Visit freedivingbase →</a>
-
-</div>
-
-<div class="resource-card">
-
-<h4>AIDA International</h4>
-
-<p>Premier international federation for freediving certification, competitions, and education standards.</p>
-
-<a href="https://www.aidainternational.org" target="_blank" rel="noopener noreferrer">Visit AIDA →</a>
-
-</div>
-
-<div class="resource-card">
-
-<h4>CMAS Freediving</h4>
-
-<p>World confederation standards for safe freediving training and certification worldwide.</p>
-
-<a href="https://www.cmas.org" target="_blank" rel="noopener noreferrer">Visit CMAS →</a>
-
-</div>
-
-<div class="resource-card">
-
-<h4>Find a Coach</h4>
-
-<p>Always train with a qualified instructor. Certified coaching is essential for safe progression.</p>
-
-<a href="#safety" onclick="document.getElementById('safety').scrollIntoView({behavior:'smooth'})">Review Safety →</a>
-
-</div>
-
-</div>
+<h4>Freediving Physiology</h4>
+<p>Understanding body mechanics: Boyle's Law, pressure adaptation, nitrogen narcosis at depth, oxygen consumption rates, CO₂ buildup, and proper equalization techniques.</p>
 
 </section>
-
-</div>
 
 <footer>
-
-Freediving Training Toolkit — Educational Use Only • <a href="about.html" style="color:var(--muted);text-decoration:none;">About</a>
-
+<div style="margin-bottom:20px;">
+<strong>Freediving Training Toolkit - Educational Platform for Apnea & Diving</strong>
+</div>
+<p>
+This toolkit provides educational resources for freediving training, breath holding practice, and dive planning. 
+Learn proper techniques, track your static apnea progress, understand physics-based training methods, and discover 
+freediving schools and destinations worldwide.
+</p>
+<p>
+<strong>Keywords:</strong> freediving, apnea training, static apnea, dynamic apnea, breath holding, constant weight diving, 
+freediving schools, training centers, dive destinations, apnea techniques, freediving gear, equipment, CO2 training, O2 training, 
+diving physics, pressure calculations, freediving education, competitive freediving
+</p>
+<p>
+Disclaimer: Freediving is an inherently risky activity. Always train with certified instructors and follow all safety guidelines. 
+Never train alone. Consult with professional before attempting any training protocols.
+</p>
+<p style="margin-top:20px;color:var(--muted);">
+&copy; 2024 Freediving Training Toolkit | Educational Purpose Only | Stay Safe, Train Smart
+</p>
 </footer>
+
+</div>
 
 <script>
 
-// ===== THEME TOGGLE =====
-
+// Theme toggle
 function toggleTheme() {
 const html = document.documentElement;
 const btn = document.getElementById('themeBtn');
-
 if (html.classList.contains('light')) {
 html.classList.remove('light');
+btn.textContent = '🌙 Dark';
 localStorage.setItem('theme', 'dark');
-btn.textContent = '🌙 Dark';
 } else {
 html.classList.add('light');
+btn.textContent = '☀️ Light';
 localStorage.setItem('theme', 'light');
-btn.textContent = '☀️ Light';
 }
 }
 
-// Load theme on page load
-document.addEventListener('DOMContentLoaded', function() {
+// Load theme on startup
 const savedTheme = localStorage.getItem('theme') || 'dark';
-const html = document.documentElement;
-const btn = document.getElementById('themeBtn');
-
 if (savedTheme === 'light') {
-html.classList.add('light');
-btn.textContent = '☀️ Light';
-} else {
-html.classList.remove('light');
-btn.textContent = '🌙 Dark';
+document.documentElement.classList.add('light');
+document.getElementById('themeBtn').textContent = '☀️ Light';
 }
 
-updateLogUI();
-});
-
-// ===== PHYSICS =====
-
+// Physics calculations
 document.getElementById('depth')?.addEventListener('input', function() {
 const depth = parseFloat(this.value);
 if (!isNaN(depth) && depth >= 0) {
@@ -1436,269 +1233,144 @@ document.getElementById('pressureResult').textContent = `${pressure.toFixed(2)} 
 }
 });
 
-document.getElementById('lung')?.addEventListener('input', calculate);
-document.getElementById('lungDepth')?.addEventListener('input', calculate);
+document.getElementById('lung')?.addEventListener('input', updateLung);
+document.getElementById('lungDepth')?.addEventListener('input', updateLung);
 
-function calculate() {
+function updateLung() {
 const lung = parseFloat(document.getElementById('lung').value);
-const depth = parseFloat(document.getElementById('lungDepth').value);
-if (!isNaN(lung) && !isNaN(depth) && lung > 0 && depth >= 0) {
-const pressure = (depth / 10) + 1;
-const volume = lung / pressure;
-document.getElementById('lungResult').textContent = `${volume.toFixed(2)} L at ${depth}m`;
+const lungDepth = parseFloat(document.getElementById('lungDepth').value);
+if (!isNaN(lung) && !isNaN(lungDepth) && lung > 0 && lungDepth >= 0) {
+const pressureAtDepth = (lungDepth / 10) + 1;
+const compressedVolume = lung / pressureAtDepth;
+document.getElementById('lungResult').textContent = `${compressedVolume.toFixed(2)} L at ${lungDepth}m`;
 }
 }
 
-// ===== TRAINING =====
+// Performance calculations
+document.getElementById('perfDepth')?.addEventListener('input', updatePerf);
+document.getElementById('perfSpeed')?.addEventListener('input', updatePerf);
 
+function updatePerf() {
+const depth = parseFloat(document.getElementById('perfDepth').value);
+const speed = parseFloat(document.getElementById('perfSpeed').value);
+if (!isNaN(depth) && !isNaN(speed) && speed > 0) {
+const time = depth / speed;
+document.getElementById('perfResult').textContent = `${time.toFixed(1)} seconds`;
+}
+}
+
+// Training table generation
 function generateCO2() {
 const hold = parseInt(document.getElementById('co2Hold').value);
 const rest = parseInt(document.getElementById('co2Rest').value);
 const rounds = parseInt(document.getElementById('co2Rounds').value);
 
-if (isNaN(hold) || isNaN(rest) || isNaN(rounds) || hold < 1 || rest < 1 || rounds < 1) {
-document.getElementById('co2Result').textContent = 'Enter valid values';
-return;
+let table = '<table>';
+table += '<tr><th>Round</th><th>Hold (s)</th><th>Rest (s)</th></tr>';
+
+for (let i = 1; i <= rounds; i++) {
+const newRest = Math.max(10, rest - (5 * (i - 1)));
+table += `<tr><td>${i}</td><td>${hold}</td><td>${newRest}</td></tr>`;
 }
 
-let table = '<table><tr><th>Round</th><th>Hold</th><th>Rest</th></tr>';
-for (let i = 1; i <= rounds; i++) {
-table += `<tr><td>${i}</td><td>${hold}s</td><td>${rest}s</td></tr>`;
-}
 table += '</table>';
 document.getElementById('co2Result').innerHTML = table;
 }
 
 function generateO2() {
-const hold = parseInt(document.getElementById('o2Hold').value);
+const startHold = parseInt(document.getElementById('o2Hold').value);
 const rest = parseInt(document.getElementById('o2Rest').value);
 const rounds = parseInt(document.getElementById('o2Rounds').value);
 
-if (isNaN(hold) || isNaN(rest) || isNaN(rounds) || hold < 1 || rest < 1 || rounds < 1) {
-document.getElementById('o2Result').textContent = 'Enter valid values';
-return;
+let table = '<table>';
+table += '<tr><th>Round</th><th>Hold (s)</th><th>Rest (s)</th></tr>';
+
+for (let i = 1; i <= rounds; i++) {
+const newHold = Math.max(10, startHold - (10 * (i - 1)));
+table += `<tr><td>${i}</td><td>${newHold}</td><td>${rest}</td></tr>`;
 }
 
-let table = '<table><tr><th>Round</th><th>Hold</th><th>Rest</th></tr>';
-for (let i = 1; i <= rounds; i++) {
-const roundHold = Math.max(10, hold - (i - 1) * Math.ceil(hold / (rounds + 1)));
-table += `<tr><td>${i}</td><td>${roundHold}s</td><td>${rest}s</td></tr>`;
-}
 table += '</table>';
 document.getElementById('o2Result').innerHTML = table;
 }
 
-let timerInterval;
+// Breathing routine
+function calculateBreathingRoutine() {
+const count = parseInt(document.getElementById('breathCount').value);
+const interval = parseFloat(document.getElementById('breathInterval').value);
+if (isNaN(count) || isNaN(interval)) return;
+
+const totalTime = count * interval;
+document.getElementById('breathResult').innerHTML = `
+${count} deep breaths × ${interval}s = <strong>${totalTime.toFixed(1)} seconds total</strong><br>
+Take controlled breaths, avoid hyperventilation. Relax and focus.
+`;
+}
+
+// Recovery time
+document.getElementById('diveTime')?.addEventListener('input', function() {
+const diveTime = parseFloat(this.value);
+if (!isNaN(diveTime) && diveTime > 0) {
+const recovery = diveTime * 2;
+document.getElementById('recoveryResult').textContent = `Recommended: ${recovery.toFixed(0)} seconds (${(recovery/60).toFixed(1)} minutes)`;
+}
+});
+
+// Timer
+let timerInterval = null;
+let timerSeconds = 0;
 let timerRunning = false;
-let elapsed = 0;
+let targetSeconds = 0;
 
 function startTimer() {
 const target = parseInt(document.getElementById('target').value);
-if (isNaN(target) || target < 1) {
-document.getElementById('marker').textContent = 'Enter target time';
-return;
-}
+if (isNaN(target) || target <= 0) return;
 
-if (timerRunning) return;
+if (!timerRunning) {
+targetSeconds = target;
 timerRunning = true;
 
 timerInterval = setInterval(() => {
-elapsed++;
-const minutes = Math.floor(elapsed / 60);
-const seconds = elapsed % 60;
-document.getElementById('timer').textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+timerSeconds++;
+updateTimerDisplay();
 
-const percent = (elapsed / target) * 100;
-document.getElementById('progress').style.width = percent + '%';
-
-if (elapsed >= target) {
+if (timerSeconds >= targetSeconds) {
 clearInterval(timerInterval);
 timerRunning = false;
-document.getElementById('marker').textContent = '✓ Target reached';
-document.getElementById('marker').className = 'result ok';
+document.getElementById('marker').textContent = '✓ Target reached!';
+document.getElementById('marker').style.color = 'var(--ok)';
 }
 }, 1000);
 }
+}
 
 function pauseTimer() {
+if (timerRunning) {
 clearInterval(timerInterval);
 timerRunning = false;
 document.getElementById('marker').textContent = 'Paused';
 }
+}
 
 function resetTimer() {
 clearInterval(timerInterval);
+timerSeconds = 0;
 timerRunning = false;
-elapsed = 0;
-document.getElementById('timer').textContent = '00:00';
-document.getElementById('progress').style.width = '0%';
+targetSeconds = 0;
+updateTimerDisplay();
 document.getElementById('marker').textContent = 'Ready';
-document.getElementById('marker').className = 'result';
+document.getElementById('marker').style.color = 'inherit';
 }
 
-// ===== PERFORMANCE =====
+function updateTimerDisplay() {
+const minutes = Math.floor(timerSeconds / 60);
+const seconds = timerSeconds % 60;
+const display = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+document.getElementById('timer').textContent = display;
 
-document.getElementById('perfDepth')?.addEventListener('input', function() {
-const depth = parseFloat(document.getElementById('perfDepth').value);
-const speed = parseFloat(document.getElementById('perfSpeed').value);
-if (!isNaN(depth) && !isNaN(speed) && depth >= 0 && speed > 0) {
-const time = depth / speed;
-document.getElementById('perfResult').textContent = `${time.toFixed(1)} seconds`;
-}
-});
-
-document.getElementById('perfSpeed')?.addEventListener('input', function() {
-const depth = parseFloat(document.getElementById('perfDepth').value);
-const speed = parseFloat(this.value);
-if (!isNaN(depth) && !isNaN(speed) && depth >= 0 && speed > 0) {
-const time = depth / speed;
-document.getElementById('perfResult').textContent = `${time.toFixed(1)} seconds`;
-}
-});
-
-document.getElementById('speedDepth')?.addEventListener('input', function() {
-const depth = parseFloat(this.value);
-const time = parseFloat(document.getElementById('speedTime').value);
-if (!isNaN(depth) && !isNaN(time) && depth >= 0 && time > 0) {
-const speed = depth / time;
-document.getElementById('speedResult').textContent = `${speed.toFixed(2)} m/s`;
-}
-});
-
-document.getElementById('speedTime')?.addEventListener('input', function() {
-const time = parseFloat(this.value);
-const depth = parseFloat(document.getElementById('speedDepth').value);
-if (!isNaN(depth) && !isNaN(time) && depth >= 0 && time > 0) {
-const speed = depth / time;
-document.getElementById('speedResult').textContent = `${speed.toFixed(2)} m/s`;
-}
-});
-
-function buildBreathup() {
-const inhale = parseFloat(document.getElementById('inhale').value);
-const exhale = parseFloat(document.getElementById('exhale').value);
-const cycles = parseInt(document.getElementById('cycles').value);
-
-if (isNaN(inhale) || isNaN(exhale) || isNaN(cycles) || inhale < 0.5 || exhale < 0.5 || cycles < 1) {
-document.getElementById('breathResult').textContent = 'Enter valid values';
-return;
-}
-
-const total = (inhale + exhale) * cycles;
-const mins = Math.floor(total / 60);
-const secs = Math.round(total % 60);
-
-let html = `<strong>${cycles} cycles:</strong><br>Inhale ${inhale}s, Exhale ${exhale}s<br><br>Total time: ${mins}m ${secs}s`;
-document.getElementById('breathResult').innerHTML = html;
-}
-
-// ===== PLANNER =====
-
-function buildSession() {
-const warmup = parseFloat(document.getElementById('warmup').value) || 0;
-const co2 = parseFloat(document.getElementById('plannerCo2').value) || 0;
-const o2 = parseFloat(document.getElementById('plannerO2').value) || 0;
-const max = parseFloat(document.getElementById('plannerMax').value) || 0;
-
-const total = warmup + co2 + o2 + max;
-
-if (total === 0) {
-document.getElementById('sessionResult').textContent = 'Enter durations to build session';
-return;
-}
-
-let startTime = 0;
-let html = '<table><tr><th>Block</th><th>Start</th><th>Duration</th><th>End</th></tr>';
-
-if (warmup > 0) {
-html += `<tr><td>Warm-up</td><td>0:00</td><td>${warmup} min</td><td>${warmup}:00</td></tr>`;
-startTime += warmup;
-}
-
-if (co2 > 0) {
-const end = startTime + co2;
-html += `<tr><td>CO₂ Block</td><td>${startTime}:00</td><td>${co2} min</td><td>${end}:00</td></tr>`;
-startTime += co2;
-}
-
-if (o2 > 0) {
-const end = startTime + o2;
-html += `<tr><td>O₂ Block</td><td>${startTime}:00</td><td>${o2} min</td><td>${end}:00</td></tr>`;
-startTime += o2;
-}
-
-if (max > 0) {
-const end = startTime + max;
-html += `<tr><td>Max Attempt</td><td>${startTime}:00</td><td>${max} min</td><td>${end}:00</td></tr>`;
-}
-
-html += '</table>';
-html += `<br><strong>Total: ${total} minutes</strong>`;
-
-document.getElementById('sessionResult').innerHTML = html;
-}
-
-// ===== DIVE LOG =====
-
-function saveDive() {
-const depth = parseFloat(document.getElementById('logDepth').value);
-const time = parseFloat(document.getElementById('logTime').value);
-const note = document.getElementById('logNote').value.trim();
-
-if (isNaN(depth) || isNaN(time) || depth < 0 || time < 1) {
-alert('Enter valid depth and time');
-return;
-}
-
-let logs = JSON.parse(localStorage.getItem('diveLogs') || '[]');
-logs.push({
-depth,
-time,
-note,
-date: new Date().toLocaleString()
-});
-localStorage.setItem('diveLogs', JSON.stringify(logs));
-
-document.getElementById('logDepth').value = '';
-document.getElementById('logTime').value = '';
-document.getElementById('logNote').value = '';
-
-updateLogUI();
-}
-
-function updateLogUI() {
-let logs = JSON.parse(localStorage.getItem('diveLogs') || '[]');
-
-if (logs.length === 0) {
-document.getElementById('stats').textContent = 'No dives logged yet';
-document.getElementById('history').textContent = 'Empty';
-return;
-}
-
-const maxDepth = Math.max(...logs.map(l => l.depth));
-const avgTime = (logs.reduce((sum, l) => sum + l.time, 0) / logs.length).toFixed(0);
-const avgDepth = (logs.reduce((sum, l) => sum + l.depth, 0) / logs.length).toFixed(1);
-
-document.getElementById('stats').innerHTML = `
-<strong>${logs.length}</strong> dives logged<br>
-Max depth: <strong>${maxDepth}m</strong><br>
-Avg depth: <strong>${avgDepth}m</strong><br>
-Avg time: <strong>${avgTime}s</strong>
-`;
-
-let historyHtml = '<table><tr><th>Date</th><th>Depth</th><th>Time</th><th>Note</th></tr>';
-logs.slice().reverse().forEach(log => {
-const note = log.note ? log.note.substring(0, 30) + (log.note.length > 30 ? '...' : '') : '—';
-historyHtml += `<tr><td style="font-size:11px;">${log.date}</td><td>${log.depth}m</td><td>${log.time}s</td><td style="font-size:12px;">${note}</td></tr>`;
-});
-historyHtml += '</table>';
-document.getElementById('history').innerHTML = historyHtml;
-}
-
-function clearLogs() {
-if (confirm('Clear all dive logs? This cannot be undone.')) {
-localStorage.removeItem('diveLogs');
-updateLogUI();
+if (targetSeconds > 0) {
+const progress = (timerSeconds / targetSeconds) * 100;
+document.getElementById('progress').style.width = Math.min(progress, 100) + '%';
 }
 }
 
