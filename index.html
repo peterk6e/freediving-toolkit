@@ -1114,6 +1114,257 @@ General guideline: Recovery ≥ 2x dive time
 
 </section>
 
+<!-- PLANNER -->
+
+<section id="planner">
+
+<h2>Dive Planner</h2>
+
+<p class="description">
+Plan your freediving sessions and structure your training week.
+</p>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>Weekly Training Plan</h3>
+
+<p class="description">
+Structure your week with different training focuses.
+</p>
+
+<label>Training Focus</label>
+<select id="trainingFocus">
+<option>Static Apnea</option>
+<option>Dynamic Apnea</option>
+<option>Depth Training</option>
+<option>CO₂ Tables</option>
+<option>O₂ Tables</option>
+</select>
+
+<label>Sessions per Week</label>
+<input id="sessionsPerWeek" type="number" placeholder="e.g., 3" min="1" max="7">
+
+<button onclick="planWeek()">Generate Plan</button>
+
+<div class="result" id="weeklyPlanResult">—</div>
+
+</div>
+
+<div class="card">
+
+<h3>Session Duration</h3>
+
+<p class="description">
+Calculate optimal training session duration.
+</p>
+
+<label>Training Level</label>
+<select id="trainingLevel">
+<option>Beginner</option>
+<option>Intermediate</option>
+<option>Advanced</option>
+</select>
+
+<button onclick="calculateSessionDuration()">Calculate</button>
+
+<div class="result" id="sessionDurationResult">—</div>
+
+<div class="note">
+Rest days are essential for adaptation and safety.
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- DIVE LOG -->
+
+<section id="logs">
+
+<h2>Dive Log</h2>
+
+<p class="description">
+Track and record your freediving sessions and progress.
+</p>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>Log a Dive</h3>
+
+<label>Depth (m)</label>
+<input id="logDepth" type="number" placeholder="e.g., 20" min="0">
+
+<label>Duration (seconds)</label>
+<input id="logDuration" type="number" placeholder="e.g., 120" min="0">
+
+<label>Notes</label>
+<textarea id="logNotes" placeholder="How did it feel? Any observations?"></textarea>
+
+<button onclick="saveDiveLog()">Save Dive</button>
+
+<div class="result" id="logResult">—</div>
+
+</div>
+
+<div class="card">
+
+<h3>View History</h3>
+
+<p class="description">
+Review your recent dives and track progress.
+</p>
+
+<button onclick="displayDiveHistory()">Show Recent Dives</button>
+
+<div class="result" id="historyResult" style="font-size:11px;max-height:200px;overflow-y:auto;">—</div>
+
+<button onclick="clearDiveLog()" style="background:#ff6b6b;margin-top:10px;">Clear History</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- SAFETY -->
+
+<section id="safety">
+
+<h2>Safety Guidelines</h2>
+
+<p class="description">
+Essential safety practices for freediving and apnea training.
+</p>
+
+<div class="warning">
+
+<strong>⚠️ CRITICAL SAFETY REMINDERS</strong>
+
+<ul style="margin:12px 0;padding-left:20px;">
+<li><strong>Never freedive alone</strong> - Always have a trained buddy present</li>
+<li><strong>Train with certified instructors</strong> - Professional guidance is essential</li>
+<li><strong>Monitor for shallow water blackout</strong> - Loss of consciousness can be fatal</li>
+<li><strong>Avoid hyperventilation</strong> - It reduces CO₂ signals and increases blackout risk</li>
+<li><strong>Respect your limits</strong> - Progressive training prevents injuries</li>
+<li><strong>Know mammalian dive reflex</strong> - Understand your body's responses at depth</li>
+<li><strong>Maintain fitness</strong> - Good cardiovascular health is crucial</li>
+<li><strong>Check equipment regularly</strong> - Proper gear prevents accidents</li>
+</ul>
+
+</div>
+
+<div class="grid" style="margin-top:20px;">
+
+<div class="card">
+
+<h3>Pre-Dive Checklist</h3>
+
+<p class="description">
+Complete before every session.
+</p>
+
+<label style="display:flex;align-items:center;">
+<input type="checkbox" style="width:auto;margin-right:8px;"> Buddy present and aware
+</label>
+
+<label style="display:flex;align-items:center;">
+<input type="checkbox" style="width:auto;margin-right:8px;"> Equipment inspected
+</label>
+
+<label style="display:flex;align-items:center;">
+<input type="checkbox" style="width:auto;margin-right:8px;"> Safety procedures reviewed
+</label>
+
+<label style="display:flex;align-items:center;">
+<input type="checkbox" style="width:auto;margin-right:8px;"> Water conditions acceptable
+</label>
+
+<label style="display:flex;align-items:center;">
+<input type="checkbox" style="width:auto;margin-right:8px;"> Personal feeling good
+</label>
+
+</div>
+
+<div class="card">
+
+<h3>Emergency Procedures</h3>
+
+<p class="description">
+Know what to do in emergencies.
+</p>
+
+<div class="note" style="padding:12px;background:rgba(76,182,255,.1);border-radius:6px;">
+<strong>If buddy loses consciousness:</strong><br>
+1. Bring them to surface immediately<br>
+2. Clear airway<br>
+3. Begin rescue breathing if trained<br>
+4. Call emergency services<br>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- RESOURCES -->
+
+<section id="resources">
+
+<h2>Resources & References</h2>
+
+<p class="description">
+Trusted organizations, training centers, and educational materials for freediving.
+</p>
+
+<div class="grid">
+
+<div class="resource-card">
+<h4>AIDA International</h4>
+<p>World federation for freediving. Certifications, competitions, and training standards.</p>
+<a href="https://www.aidainternational.org" target="_blank">Visit AIDA</a>
+</div>
+
+<div class="resource-card">
+<h4>SSI Freediving</h4>
+<p>Scuba Schools International freediving programs and instructor certifications.</p>
+<a href="https://www.divessi.com" target="_blank">Visit SSI</a>
+</div>
+
+<div class="resource-card">
+<h4>Molchanovs</h4>
+<p>Freediving education, coaching, and performance training methodology.</p>
+<a href="https://www.molchanovs.com" target="_blank">Visit Molchanovs</a>
+</div>
+
+<div class="resource-card">
+<h4>CMAS</h4>
+<p>Confédération Mondiale des Activités Subaquatiques - World underwater federation.</p>
+<a href="https://www.cmas.org" target="_blank">Visit CMAS</a>
+</div>
+
+<div class="resource-card">
+<h4>FreedivingBase</h4>
+<p>Community platform for freediving news, training, and destination guides.</p>
+<a href="https://freedivingbase.com" target="_blank">Visit FreedivingBase</a>
+</div>
+
+<div class="resource-card">
+<h4>DAN (Divers Alert Network)</h4>
+<p>Diving safety organization with emergency protocols and medical support.</p>
+<a href="https://www.diversalertnetwork.org" target="_blank">Visit DAN</a>
+</div>
+
+</div>
+
+</section>
+
 <!-- SEO SECTION: Freediving Content -->
 <section class="seo-section">
 <h3>Comprehensive Freediving & Apnea Training Guide</h3>
@@ -1191,7 +1442,7 @@ diving physics, pressure calculations, freediving education, competitive freediv
 </p>
 <p>
 Disclaimer: Freediving is an inherently risky activity. Always train with certified instructors and follow all safety guidelines. 
-Never train alone. Consult with professional before attempting any training protocols.
+Never train alone. Consult with professionals before attempting any training protocols.
 </p>
 <p style="margin-top:20px;color:var(--muted);">
 &copy; 2024 Freediving Training Toolkit | Educational Purpose Only | Stay Safe, Train Smart
@@ -1315,6 +1566,81 @@ const recovery = diveTime * 2;
 document.getElementById('recoveryResult').textContent = `Recommended: ${recovery.toFixed(0)} seconds (${(recovery/60).toFixed(1)} minutes)`;
 }
 });
+
+// Planner functions
+function planWeek() {
+const focus = document.getElementById('trainingFocus').value;
+const sessions = parseInt(document.getElementById('sessionsPerWeek').value);
+if (isNaN(sessions) || sessions < 1) return;
+
+document.getElementById('weeklyPlanResult').innerHTML = `
+<strong>Weekly ${focus} Plan (${sessions} sessions)</strong><br>
+Training load: ${sessions}/week<br>
+Rest days: ${7-sessions} days<br>
+Focus: Progressive improvement with adequate recovery
+`;
+}
+
+function calculateSessionDuration() {
+const level = document.getElementById('trainingLevel').value;
+const durations = {
+'Beginner': '30-45 minutes',
+'Intermediate': '45-60 minutes',
+'Advanced': '60-90 minutes'
+};
+document.getElementById('sessionDurationResult').textContent = `Recommended: ${durations[level]}`;
+}
+
+// Dive log functions
+function saveDiveLog() {
+const depth = parseFloat(document.getElementById('logDepth').value);
+const duration = parseInt(document.getElementById('logDuration').value);
+const notes = document.getElementById('logNotes').value;
+
+if (isNaN(depth) || isNaN(duration)) {
+document.getElementById('logResult').textContent = 'Please fill in depth and duration';
+return;
+}
+
+let logs = JSON.parse(localStorage.getItem('diveLogs') || '[]');
+logs.push({
+date: new Date().toLocaleString(),
+depth: depth,
+duration: duration,
+notes: notes
+});
+localStorage.setItem('diveLogs', JSON.stringify(logs));
+document.getElementById('logResult').innerHTML = `<span style="color:var(--ok);">✓ Dive logged!</span>`;
+
+document.getElementById('logDepth').value = '';
+document.getElementById('logDuration').value = '';
+document.getElementById('logNotes').value = '';
+}
+
+function displayDiveHistory() {
+let logs = JSON.parse(localStorage.getItem('diveLogs') || '[]');
+if (logs.length === 0) {
+document.getElementById('historyResult').textContent = 'No dives logged yet';
+return;
+}
+
+let html = '<strong>Recent Dives:</strong><br>';
+logs.slice(-10).reverse().forEach((log, i) => {
+html += `<div style="margin:8px 0;padding:8px;background:rgba(76,182,255,.05);border-radius:4px;">
+${log.date}<br>
+Depth: ${log.depth}m | Time: ${log.duration}s<br>
+${log.notes ? `Notes: ${log.notes}` : 'No notes'}
+</div>`;
+});
+document.getElementById('historyResult').innerHTML = html;
+}
+
+function clearDiveLog() {
+if (confirm('Clear all dive logs? This cannot be undone.')) {
+localStorage.removeItem('diveLogs');
+document.getElementById('historyResult').textContent = 'Dive history cleared';
+}
+}
 
 // Timer
 let timerInterval = null;
