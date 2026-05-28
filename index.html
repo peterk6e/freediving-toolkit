@@ -39,9 +39,12 @@
 --text:#edf5ff;
 --muted:#9db3d5;
 --accent:#4cb6ff;
+--accent-light:#5cc7ff;
 --ok:#2ecc71;
 --warn:#ff6b6b;
+--warn-soft:#ffa8a8;
 --border:rgba(255,255,255,.08);
+--border-light:rgba(92,199,255,.15);
 }
 
 html.light {
@@ -51,9 +54,12 @@ html.light {
 --text:#1a1a1a;
 --muted:#666666;
 --accent:#0066cc;
+--accent-light:#4da6ff;
 --ok:#2ecc71;
 --warn:#ff6b6b;
+--warn-soft:#ffcccc;
 --border:rgba(0,0,0,.1);
+--border-light:rgba(13, 110, 253, .15);
 }
 
 *{
@@ -192,6 +198,13 @@ background:var(--panel);
 
 border-radius:999px;
 
+transition: all 0.2s;
+
+}
+
+nav a:hover{
+border: 1px solid var(--border-light);
+color: var(--accent-light);
 }
 
 .hero{
@@ -281,18 +294,25 @@ margin-bottom:28px;
 background:var(--panel);
 
 border:
-1px solid var(--border);
+1px solid var(--border-light);
 
 border-radius:14px;
 
 padding:24px;
 
+transition: all 0.2s;
+
+}
+
+section:hover{
+border-color: var(--accent);
 }
 
 h2{
 
 margin-top:0;
 margin-bottom:20px;
+color: var(--accent-light);
 
 }
 
@@ -300,6 +320,14 @@ h3{
 margin-top:0;
 margin-bottom:12px;
 font-size:16px;
+display: flex;
+align-items: center;
+gap: 8px;
+}
+
+h3::before{
+content: attr(data-icon);
+font-size: 18px;
 }
 
 .description{
@@ -328,12 +356,19 @@ padding:18px;
 
 border-radius:12px;
 
-border:1px solid rgba(255,255,255,.04);
+border:1px solid var(--border-light);
+
+transition: all 0.2s;
 
 }
 
+.card:hover{
+border-color: var(--accent-light);
+box-shadow: 0 0 12px rgba(92,199,255,.1);
+}
+
 html.light .card{
-border:1px solid rgba(0,0,0,.08);
+border:1px solid var(--border-light);
 }
 
 label{
@@ -360,7 +395,7 @@ padding:10px;
 border-radius:10px;
 
 border:
-1px solid var(--border);
+1px solid var(--border-light);
 
 background:#0a1628;
 
@@ -368,6 +403,16 @@ color:white;
 
 font-family:inherit;
 
+transition: all 0.2s;
+
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+border-color: var(--accent-light);
+outline: none;
+box-shadow: 0 0 8px rgba(92,199,255,.2);
 }
 
 html.light input,
@@ -376,7 +421,7 @@ html.light textarea,
 html.light select{
 background:#f0f2f5;
 color:var(--text);
-border:1px solid var(--border);
+border:1px solid var(--border-light);
 }
 
 input::placeholder,
@@ -397,10 +442,17 @@ background:#153153;
 
 margin-top:12px;
 
+transition: all 0.2s;
+
 }
 
 button:hover{
-border-color:var(--accent);
+border-color:var(--accent-light);
+background: #1a3f5a;
+}
+
+button:active{
+transform: scale(0.98);
 }
 
 .result{
@@ -413,7 +465,7 @@ border-radius:10px;
 
 font-size:14px;
 
-border:1px solid var(--border);
+border:1px solid var(--border-light);
 
 margin-top:12px;
 
@@ -439,12 +491,21 @@ color:var(--warn);
 
 padding:12px;
 
-background:rgba(255,107,107,.1);
+background:rgba(92,199,255,.1);
 
-border-left:3px solid var(--warn);
+border:1px solid var(--border-light);
+
+border-left:3px solid var(--accent-light);
 
 border-radius:6px;
 
+}
+
+.warning-danger{
+color: var(--warn);
+background: rgba(255, 107, 107, .08);
+border: 1px solid rgba(255, 107, 107, .15);
+border-left: 3px solid var(--warn);
 }
 
 .ok{
@@ -477,6 +538,8 @@ overflow:hidden;
 
 margin:16px 0;
 
+border: 1px solid var(--border-light);
+
 }
 
 html.light .progress{
@@ -489,7 +552,7 @@ height:100%;
 
 width:0%;
 
-background:var(--accent);
+background: linear-gradient(90deg, var(--accent), var(--accent-light));
 
 transition:.2s;
 
@@ -510,7 +573,7 @@ td,th{
 padding:10px 8px;
 
 border-bottom:
-1px solid var(--border);
+1px solid var(--border-light);
 
 font-size:13px;
 
@@ -520,20 +583,28 @@ text-align:left;
 
 th{
 font-weight:600;
-color:var(--accent);
+color:var(--accent-light);
+background: rgba(92,199,255,.05);
 }
 
 .resource-card{
 background:var(--panel2);
 padding:18px;
 border-radius:12px;
-border:1px solid var(--border);
+border:1px solid var(--border-light);
 text-align:center;
+transition: all 0.2s;
+}
+
+.resource-card:hover{
+border-color: var(--accent-light);
+box-shadow: 0 0 12px rgba(92,199,255,.1);
 }
 
 .resource-card h4{
 margin:0 0 8px 0;
 font-size:14px;
+color: var(--accent-light);
 }
 
 .resource-card p{
@@ -546,17 +617,19 @@ color:var(--muted);
 display:inline-block;
 margin-top:10px;
 padding:8px 14px;
-background:var(--accent);
+background: linear-gradient(135deg, var(--accent), var(--accent-light));
 color:white;
 text-decoration:none;
 border-radius:8px;
 font-size:12px;
 font-weight:600;
 transition:all 0.2s;
+border: 1px solid var(--accent-light);
 }
 
 .resource-card a:hover{
 opacity:0.9;
+transform: translateY(-2px);
 }
 
 html.light .resource-card a{
@@ -565,7 +638,7 @@ color:white;
 
 .seo-section{
 background:var(--panel);
-border:1px solid var(--border);
+border:1px solid var(--border-light);
 border-radius:14px;
 padding:24px;
 margin-top:28px;
@@ -574,7 +647,12 @@ line-height:1.8;
 }
 
 .seo-section h3{
-color:var(--accent);
+color:var(--accent-light);
+}
+
+.seo-section h4{
+color: var(--accent-light);
+margin-top: 16px;
 }
 
 .seo-section ul{
@@ -598,6 +676,18 @@ font-size:12px;
 
 line-height:1.6;
 
+border-top: 1px solid var(--border-light);
+
+}
+
+.btn-danger{
+background: var(--warn-soft) !important;
+color: var(--warn) !important;
+border: 1px solid var(--warn-soft) !important;
+}
+
+.btn-danger:hover{
+background: rgba(255, 107, 107, .2) !important;
 }
 
 @media(max-width:640px){
@@ -636,7 +726,7 @@ columns:1;
 <div>
 
 <h1>
-Freediving Training Toolkit
+🌊 Freediving Training Toolkit
 </h1>
 
 <div class="subtitle">
@@ -666,31 +756,31 @@ about
 <nav>
 
 <a href="#physics">
-Physics
+📐 Physics
 </a>
 
 <a href="#training">
-Training
+💪 Training
 </a>
 
 <a href="#performance">
-Performance
+🎯 Performance
 </a>
 
 <a href="#planner">
-Planner
+📅 Planner
 </a>
 
 <a href="#logs">
-Dive Log
+📝 Dive Log
 </a>
 
 <a href="#safety">
-Safety
+⚠️ Safety
 </a>
 
 <a href="#resources">
-Resources
+🔗 Resources
 </a>
 
 </nav>
@@ -710,9 +800,7 @@ Resources
 
 <section id="physics">
 
-<h2>
-Physics Tools
-</h2>
+<h2>📐 Physics Tools</h2>
 
 <p class="description">
 Understand pressure and gas behavior at depth using fundamental physics principles.
@@ -722,9 +810,7 @@ Understand pressure and gas behavior at depth using fundamental physics principl
 
 <div class="card">
 
-<h3>
-Depth → Pressure
-</h3>
+<h3 data-icon="📊">Depth → Pressure</h3>
 
 <p class="description">
 Calculate absolute pressure at depth.
@@ -756,9 +842,7 @@ Uses approximation: P = depth / 10 + 1 (bar)
 
 <div class="card">
 
-<h3>
-Lung Compression
-</h3>
+<h3 data-icon="💨">Lung Compression</h3>
 
 <p class="description">
 See how lung volume shrinks with depth using Boyle's law.
@@ -800,9 +884,7 @@ Boyle's law: PV = constant
 
 <div class="card">
 
-<h3>
-Gas Behavior Reference
-</h3>
+<h3 data-icon="⚗️">Gas Behavior Reference</h3>
 
 <p class="description">
 Quick reminder of how gases compress with increasing pressure.
@@ -828,11 +910,7 @@ As depth increases, pressure increases, and volume decreases proportionally.
 
 <section id="training">
 
-<h2>
-
-Training Tools
-
-</h2>
+<h2>💪 Training Tools</h2>
 
 <p class="description">
 Build and execute CO₂ and O₂ tables, or track static apnea performance.
@@ -842,9 +920,7 @@ Build and execute CO₂ and O₂ tables, or track static apnea performance.
 
 <div class="card">
 
-<h3>
-CO₂ Table Builder
-</h3>
+<h3 data-icon="🫁">CO₂ Table Builder</h3>
 
 <p class="description">
 Generate a CO₂ table: fixed hold time, decreasing rest intervals.
@@ -884,9 +960,7 @@ id="co2Result">
 
 <div class="card">
 
-<h3>
-O₂ Table Builder
-</h3>
+<h3 data-icon="🫁">O₂ Table Builder</h3>
 
 <p class="description">
 Generate an O₂ table: decreasing hold time, fixed rest intervals.
@@ -926,11 +1000,7 @@ id="o2Result">
 
 <div class="card">
 
-<h3>
-
-Static Apnea Timer
-
-</h3>
+<h3 data-icon="⏱️">Static Apnea Timer</h3>
 
 <p class="description">
 Time your static apnea attempts with visual progress tracking.
@@ -1002,9 +1072,7 @@ Ready
 
 <section id="performance">
 
-<h2>
-Performance Tools
-</h2>
+<h2>🎯 Performance Tools</h2>
 
 <p class="description">
 Plan dives, estimate descents/ascents, and prepare breathing routines.
@@ -1014,9 +1082,7 @@ Plan dives, estimate descents/ascents, and prepare breathing routines.
 
 <div class="card">
 
-<h3>
-Depth ↔ Time Calculator
-</h3>
+<h3 data-icon="🎚️">Depth ↔ Time Calculator</h3>
 
 <p class="description">
 Estimate descent or ascent time given depth and speed.
@@ -1050,9 +1116,7 @@ Time = depth ÷ speed
 
 <div class="card">
 
-<h3>
-Breathing Routine
-</h3>
+<h3 data-icon="🌬️">Breathing Routine</h3>
 
 <p class="description">
 Prepare your pre-dive breathing sequence.
@@ -1086,9 +1150,7 @@ Hyperventilation increases risks. Use controlled breathing.
 
 <div class="card">
 
-<h3>
-Recovery Time
-</h3>
+<h3 data-icon="💤">Recovery Time</h3>
 
 <p class="description">
 Calculate recommended recovery intervals.
@@ -1118,7 +1180,7 @@ General guideline: Recovery ≥ 2x dive time
 
 <section id="planner">
 
-<h2>Dive Planner</h2>
+<h2>📅 Dive Planner</h2>
 
 <p class="description">
 Plan your freediving sessions and structure your training week.
@@ -1128,7 +1190,7 @@ Plan your freediving sessions and structure your training week.
 
 <div class="card">
 
-<h3>Weekly Training Plan</h3>
+<h3 data-icon="📋">Weekly Training Plan</h3>
 
 <p class="description">
 Structure your week with different training focuses.
@@ -1154,7 +1216,7 @@ Structure your week with different training focuses.
 
 <div class="card">
 
-<h3>Session Duration</h3>
+<h3 data-icon="⏰">Session Duration</h3>
 
 <p class="description">
 Calculate optimal training session duration.
@@ -1185,7 +1247,7 @@ Rest days are essential for adaptation and safety.
 
 <section id="logs">
 
-<h2>Dive Log</h2>
+<h2>📝 Dive Log</h2>
 
 <p class="description">
 Track and record your freediving sessions and progress.
@@ -1195,7 +1257,7 @@ Track and record your freediving sessions and progress.
 
 <div class="card">
 
-<h3>Log a Dive</h3>
+<h3 data-icon="📌">Log a Dive</h3>
 
 <label>Depth (m)</label>
 <input id="logDepth" type="number" placeholder="e.g., 20" min="0">
@@ -1214,7 +1276,7 @@ Track and record your freediving sessions and progress.
 
 <div class="card">
 
-<h3>View History</h3>
+<h3 data-icon="📖">View History</h3>
 
 <p class="description">
 Review your recent dives and track progress.
@@ -1224,7 +1286,7 @@ Review your recent dives and track progress.
 
 <div class="result" id="historyResult" style="font-size:11px;max-height:200px;overflow-y:auto;">—</div>
 
-<button onclick="clearDiveLog()" style="background:#ff6b6b;margin-top:10px;">Clear History</button>
+<button onclick="clearDiveLog()" class="btn-danger" style="margin-top:10px;">🗑️ Clear History</button>
 
 </div>
 
@@ -1236,15 +1298,15 @@ Review your recent dives and track progress.
 
 <section id="safety">
 
-<h2>Safety Guidelines</h2>
+<h2>⚠️ Safety Guidelines</h2>
 
 <p class="description">
 Essential safety practices for freediving and apnea training.
 </p>
 
-<div class="warning">
+<div class="warning warning-danger">
 
-<strong>⚠️ CRITICAL SAFETY REMINDERS</strong>
+<strong>🚨 CRITICAL SAFETY REMINDERS</strong>
 
 <ul style="margin:12px 0;padding-left:20px;">
 <li><strong>Never freedive alone</strong> - Always have a trained buddy present</li>
@@ -1263,7 +1325,7 @@ Essential safety practices for freediving and apnea training.
 
 <div class="card">
 
-<h3>Pre-Dive Checklist</h3>
+<h3 data-icon="✅">Pre-Dive Checklist</h3>
 
 <p class="description">
 Complete before every session.
@@ -1293,13 +1355,13 @@ Complete before every session.
 
 <div class="card">
 
-<h3>Emergency Procedures</h3>
+<h3 data-icon="🆘">Emergency Procedures</h3>
 
 <p class="description">
 Know what to do in emergencies.
 </p>
 
-<div class="note" style="padding:12px;background:rgba(76,182,255,.1);border-radius:6px;">
+<div class="note" style="padding:12px;background:rgba(92,199,255,.1);border:1px solid var(--border-light);border-radius:6px;">
 <strong>If buddy loses consciousness:</strong><br>
 1. Bring them to surface immediately<br>
 2. Clear airway<br>
@@ -1317,7 +1379,7 @@ Know what to do in emergencies.
 
 <section id="resources">
 
-<h2>Resources & References</h2>
+<h2>🔗 Resources & References</h2>
 
 <p class="description">
 Trusted organizations, training centers, and educational materials for freediving.
@@ -1326,37 +1388,37 @@ Trusted organizations, training centers, and educational materials for freedivin
 <div class="grid">
 
 <div class="resource-card">
-<h4>AIDA International</h4>
+<h4>🏢 AIDA International</h4>
 <p>World federation for freediving. Certifications, competitions, and training standards.</p>
 <a href="https://www.aidainternational.org" target="_blank">Visit AIDA</a>
 </div>
 
 <div class="resource-card">
-<h4>SSI Freediving</h4>
+<h4>🏊 SSI Freediving</h4>
 <p>Scuba Schools International freediving programs and instructor certifications.</p>
 <a href="https://www.divessi.com" target="_blank">Visit SSI</a>
 </div>
 
 <div class="resource-card">
-<h4>Molchanovs</h4>
+<h4>🎓 Molchanovs</h4>
 <p>Freediving education, coaching, and performance training methodology.</p>
 <a href="https://www.molchanovs.com" target="_blank">Visit Molchanovs</a>
 </div>
 
 <div class="resource-card">
-<h4>CMAS</h4>
+<h4>🌍 CMAS</h4>
 <p>Confédération Mondiale des Activités Subaquatiques - World underwater federation.</p>
 <a href="https://www.cmas.org" target="_blank">Visit CMAS</a>
 </div>
 
 <div class="resource-card">
-<h4>FreedivingBase</h4>
+<h4>💻 FreedivingBase</h4>
 <p>Community platform for freediving news, training, and destination guides.</p>
 <a href="https://freedivingbase.com" target="_blank">Visit FreedivingBase</a>
 </div>
 
 <div class="resource-card">
-<h4>DAN (Divers Alert Network)</h4>
+<h4>🆘 DAN (Divers Alert Network)</h4>
 <p>Diving safety organization with emergency protocols and medical support.</p>
 <a href="https://www.diversalertnetwork.org" target="_blank">Visit DAN</a>
 </div>
@@ -1367,7 +1429,7 @@ Trusted organizations, training centers, and educational materials for freedivin
 
 <!-- SEO SECTION: Freediving Content -->
 <section class="seo-section">
-<h3>Comprehensive Freediving & Apnea Training Guide</h3>
+<h3>📚 Comprehensive Freediving & Apnea Training Guide</h3>
 
 <p>Welcome to the ultimate freediving training toolkit for apnea enthusiasts, students, and competitive freedivers. Our educational platform provides science-based tools for training, learning proper techniques, and improving performance safely.</p>
 
@@ -1428,7 +1490,7 @@ Trusted organizations, training centers, and educational materials for freedivin
 
 <footer>
 <div style="margin-bottom:20px;">
-<strong>Freediving Training Toolkit - Educational Platform for Apnea & Diving</strong>
+<strong>🌊 Freediving Training Toolkit - Educational Platform for Apnea & Diving</strong>
 </div>
 <p>
 This toolkit provides educational resources for freediving training, breath holding practice, and dive planning. 
@@ -1626,7 +1688,7 @@ return;
 
 let html = '<strong>Recent Dives:</strong><br>';
 logs.slice(-10).reverse().forEach((log, i) => {
-html += `<div style="margin:8px 0;padding:8px;background:rgba(76,182,255,.05);border-radius:4px;">
+html += `<div style="margin:8px 0;padding:8px;background:rgba(92,199,255,.05);border-radius:4px;border-left:2px solid var(--accent-light);">
 ${log.date}<br>
 Depth: ${log.depth}m | Time: ${log.duration}s<br>
 ${log.notes ? `Notes: ${log.notes}` : 'No notes'}
