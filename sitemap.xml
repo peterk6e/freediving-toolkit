@@ -10,73 +10,9 @@
     <priority>1.0</priority>
   </url>
 
-  <!-- Main index page -->
-  <url>
-    <loc>https://peterk6e.github.io/freediving-toolkit/index.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-
   <!-- About page -->
   <url>
     <loc>https://peterk6e.github.io/freediving-toolkit/about.html</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Physics Tools Section -->
-  <url>
-    <loc>https://peterk6e.github.io/freediving-toolkit/index.html#physics</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Training Tools Section -->
-  <url>
-    <loc>https://peterk6e.github.io/freediving-toolkit/index.html#training</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Performance Tools Section -->
-  <url>
-    <loc>https://peterk6e.github.io/freediving-toolkit/index.html#performance</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Planner Section -->
-  <url>
-    <loc>https://peterk6e.github.io/freediving-toolkit/index.html#planner</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Dive Log Section -->
-  <url>
-    <loc>https://peterk6e.github.io/freediving-toolkit/index.html#logs</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Safety Section -->
-  <url>
-    <loc>https://peterk6e.github.io/freediving-toolkit/index.html#safety</loc>
-    <lastmod>2026-05-28</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Resources Section -->
-  <url>
-    <loc>https://peterk6e.github.io/freediving-toolkit/index.html#resources</loc>
     <lastmod>2026-05-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
