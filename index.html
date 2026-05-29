@@ -6,8 +6,8 @@
 <title>Freediving Training Toolkit - Apnea Training, Gear & Techniques</title>
 
 <!-- SEO Meta Tags -->
-<meta name="description" content="Complete freediving training toolkit with physics calculators, CO2/O2 tables, static apnea timer, dive logs, equipment guides, training techniques, and freediving destinations worldwide.">
-<meta name="keywords" content="freediving, apnea, training, practice, schools, centers, destinations, gear, equipment, techniques, breath holding, static apnea, dynamic apnea, constant weight, free immersion">
+<meta name="description" content="Complete freediving training toolkit with physics calculators, CO2/O2 tables, static apnea timer, dive logs, equipment guides, training techniques, and freediving resources for training and education.">
+<meta name="keywords" content="freediving, apnea, training, practice, schools, centers, destinations, gear, equipment, techniques, breath holding, static apnea, dynamic apnea, constant weight, freediving">
 <meta name="author" content="Freediving Toolkit">
 <meta name="robots" content="index, follow">
 <meta name="language" content="English">
@@ -43,23 +43,23 @@
 --ok:#2ecc71;
 --warn:#ff6b6b;
 --warn-soft:#ffa8a8;
---border:rgba(255,255,255,.08);
---border-light:rgba(92,199,255,.15);
+--border:rgba(255,255,255,.04);
+--border-light:rgba(92,199,255,.08);
 }
 
 html.light {
 --bg:#f8f9fa;
 --panel:#ffffff;
---panel2:#f0f2f5;
+--panel2:#fafbfc;
 --text:#1a1a1a;
---muted:#666666;
+--muted:#7a8a9a;
 --accent:#0066cc;
---accent-light:#4da6ff;
+--accent-light:#0077ff;
 --ok:#2ecc71;
 --warn:#ff6b6b;
 --warn-soft:#ffcccc;
---border:rgba(0,0,0,.1);
---border-light:rgba(13, 110, 253, .15);
+--border:rgba(0,0,0,.04);
+--border-light:rgba(13, 110, 253, .08);
 }
 
 *{
@@ -127,7 +127,7 @@ font-size:13px;
 }
 
 .theme-toggle{
-background:var(--panel);
+background:transparent;
 border:1px solid var(--border);
 color:var(--text);
 padding:6px 10px;
@@ -139,6 +139,7 @@ transition:all 0.2s;
 
 .theme-toggle:hover{
 border-color:var(--accent);
+background:rgba(92,199,255,.05);
 }
 
 .small-link{
@@ -158,11 +159,14 @@ border:
 border-radius:
 999px;
 
+transition: all 0.2s;
+
 }
 
 .small-link:hover{
-color:white;
+color:var(--accent);
 border-color:var(--accent);
+background:rgba(92,199,255,.05);
 }
 
 html.light .small-link:hover{
@@ -194,17 +198,20 @@ font-size:12px;
 padding:
 8px 12px;
 
-background:var(--panel);
+background:transparent;
 
 border-radius:999px;
 
 transition: all 0.2s;
 
+border: 1px solid transparent;
+
 }
 
 nav a:hover{
-border: 1px solid var(--border-light);
+border-color: var(--accent-light);
 color: var(--accent-light);
+background:rgba(92,199,255,.05);
 }
 
 .hero{
@@ -294,7 +301,7 @@ margin-bottom:28px;
 background:var(--panel);
 
 border:
-1px solid var(--border-light);
+1px solid var(--border);
 
 border-radius:14px;
 
@@ -305,7 +312,7 @@ transition: all 0.2s;
 }
 
 section:hover{
-border-color: var(--accent);
+border-color: var(--border-light);
 }
 
 h2{
@@ -313,6 +320,7 @@ h2{
 margin-top:0;
 margin-bottom:20px;
 color: var(--accent-light);
+font-size: 20px;
 
 }
 
@@ -356,19 +364,19 @@ padding:18px;
 
 border-radius:12px;
 
-border:1px solid var(--border-light);
+border:1px solid var(--border);
 
 transition: all 0.2s;
 
 }
 
 .card:hover{
-border-color: var(--accent-light);
-box-shadow: 0 0 12px rgba(92,199,255,.1);
+border-color: var(--border-light);
+background: var(--panel);
 }
 
 html.light .card{
-border:1px solid var(--border-light);
+border:1px solid var(--border);
 }
 
 label{
@@ -395,7 +403,7 @@ padding:10px;
 border-radius:10px;
 
 border:
-1px solid var(--border-light);
+1px solid var(--border);
 
 background:#0a1628;
 
@@ -412,7 +420,7 @@ textarea:focus,
 select:focus{
 border-color: var(--accent-light);
 outline: none;
-box-shadow: 0 0 8px rgba(92,199,255,.2);
+box-shadow: 0 0 8px rgba(92,199,255,.15);
 }
 
 html.light input,
@@ -421,7 +429,7 @@ html.light textarea,
 html.light select{
 background:#f0f2f5;
 color:var(--text);
-border:1px solid var(--border-light);
+border:1px solid var(--border);
 }
 
 input::placeholder,
@@ -438,17 +446,19 @@ button{
 
 cursor:pointer;
 
-background:#153153;
+background:rgba(76,182,255,.1);
 
 margin-top:12px;
 
 transition: all 0.2s;
 
+border: 1px solid var(--border-light);
+
 }
 
 button:hover{
 border-color:var(--accent-light);
-background: #1a3f5a;
+background: rgba(76,182,255,.15);
 }
 
 button:active{
@@ -465,7 +475,7 @@ border-radius:10px;
 
 font-size:14px;
 
-border:1px solid var(--border-light);
+border:1px solid var(--border);
 
 margin-top:12px;
 
@@ -491,9 +501,9 @@ color:var(--warn);
 
 padding:12px;
 
-background:rgba(92,199,255,.1);
+background:rgba(92,199,255,.05);
 
-border:1px solid var(--border-light);
+border:1px solid var(--border);
 
 border-left:3px solid var(--accent-light);
 
@@ -503,8 +513,8 @@ border-radius:6px;
 
 .warning-danger{
 color: var(--warn);
-background: rgba(255, 107, 107, .08);
-border: 1px solid rgba(255, 107, 107, .15);
+background: rgba(255, 107, 107, .05);
+border: 1px solid var(--border);
 border-left: 3px solid var(--warn);
 }
 
@@ -538,7 +548,7 @@ overflow:hidden;
 
 margin:16px 0;
 
-border: 1px solid var(--border-light);
+border: 1px solid var(--border);
 
 }
 
@@ -573,7 +583,7 @@ td,th{
 padding:10px 8px;
 
 border-bottom:
-1px solid var(--border-light);
+1px solid var(--border);
 
 font-size:13px;
 
@@ -584,21 +594,21 @@ text-align:left;
 th{
 font-weight:600;
 color:var(--accent-light);
-background: rgba(92,199,255,.05);
+background: rgba(92,199,255,.03);
 }
 
 .resource-card{
 background:var(--panel2);
 padding:18px;
 border-radius:12px;
-border:1px solid var(--border-light);
+border:1px solid var(--border);
 text-align:center;
 transition: all 0.2s;
 }
 
 .resource-card:hover{
-border-color: var(--accent-light);
-box-shadow: 0 0 12px rgba(92,199,255,.1);
+border-color: var(--border-light);
+background: var(--panel);
 }
 
 .resource-card h4{
@@ -617,28 +627,28 @@ color:var(--muted);
 display:inline-block;
 margin-top:10px;
 padding:8px 14px;
-background: linear-gradient(135deg, var(--accent), var(--accent-light));
-color:white;
+background: rgba(76,182,255,.1);
+color:var(--accent-light);
 text-decoration:none;
 border-radius:8px;
 font-size:12px;
 font-weight:600;
 transition:all 0.2s;
-border: 1px solid var(--accent-light);
+border: 1px solid var(--border-light);
 }
 
 .resource-card a:hover{
-opacity:0.9;
-transform: translateY(-2px);
+background: rgba(76,182,255,.2);
+border-color: var(--accent-light);
 }
 
 html.light .resource-card a{
-color:white;
+color:var(--accent-light);
 }
 
 .seo-section{
 background:var(--panel);
-border:1px solid var(--border-light);
+border:1px solid var(--border);
 border-radius:14px;
 padding:24px;
 margin-top:28px;
@@ -676,18 +686,19 @@ font-size:12px;
 
 line-height:1.6;
 
-border-top: 1px solid var(--border-light);
+border-top: 1px solid var(--border);
 
 }
 
 .btn-danger{
-background: var(--warn-soft) !important;
+background: rgba(255, 107, 107, .1) !important;
 color: var(--warn) !important;
-border: 1px solid var(--warn-soft) !important;
+border: 1px solid var(--border) !important;
 }
 
 .btn-danger:hover{
-background: rgba(255, 107, 107, .2) !important;
+background: rgba(255, 107, 107, .15) !important;
+border-color: var(--warn) !important;
 }
 
 @media(max-width:640px){
@@ -1003,64 +1014,17 @@ id="o2Result">
 <h3 data-icon="⏱️">Static Apnea Timer</h3>
 
 <p class="description">
-Time your static apnea attempts with visual progress tracking.
+Time your breath hold and track your performance.
 </p>
 
-<div
-class="timer"
-id="timer">
+<button onclick="startTimer()">Start</button>
+<button onclick="pauseTimer()" style="margin-top:-10px;">Pause</button>
+<button onclick="resetTimer()" style="margin-top:-10px;">Reset</button>
 
-00:00
+<div class="timer" id="timerDisplay">0:00</div>
 
-</div>
-
-<div class="progress">
-
-<div
-class="progress-fill"
-id="progress">
-
-</div>
-
-</div>
-
-<label>
-
-Target Hold (seconds)
-
-</label>
-
-<input
-id="target"
-type="number"
-placeholder="e.g., 180"
-min="1">
-
-<button onclick="startTimer()">
-
-Start
-
-</button>
-
-<button onclick="pauseTimer()">
-
-Pause
-
-</button>
-
-<button onclick="resetTimer()">
-
-Reset
-
-</button>
-
-<div
-class="result"
-id="marker">
-
-Ready
-
-</div>
+<label>Best Time (s)</label>
+<input id="bestTime" type="number" placeholder="Record your best" min="0">
 
 </div>
 
@@ -1072,103 +1036,57 @@ Ready
 
 <section id="performance">
 
-<h2>🎯 Performance Tools</h2>
+<h2>🎯 Performance Tracking</h2>
 
 <p class="description">
-Plan dives, estimate descents/ascents, and prepare breathing routines.
+Monitor your progress and understand your performance improvements over time.
 </p>
 
 <div class="grid">
 
 <div class="card">
 
-<h3 data-icon="🎚️">Depth ↔ Time Calculator</h3>
+<h3 data-icon="📈">Performance Log</h3>
 
 <p class="description">
-Estimate descent or ascent time given depth and speed.
+Log your training session results.
 </p>
 
-<label>
-Depth (m)
-</label>
+<label>Date</label>
+<input type="date" id="perfDate">
 
-<input id="perfDepth" type="number" placeholder="e.g., 30" min="0">
+<label>Type (CO₂ / O₂ / Static)</label>
+<select id="perfType">
+<option>CO₂</option>
+<option>O₂</option>
+<option>Static</option>
+</select>
 
-<label>
-Average Speed (m/s)
-</label>
+<label>Duration (min)</label>
+<input type="number" id="perfDuration" placeholder="e.g., 30" min="1">
 
-<input id="perfSpeed" type="number" placeholder="e.g., 0.5" min="0" step="0.1">
+<label>Notes</label>
+<textarea id="perfNotes" placeholder="How did you feel? Any observations?" rows="3"></textarea>
 
-<div
-class="result"
-id="perfResult">
+<button onclick="logPerformance()">Log Session</button>
 
-—
-
-</div>
-
-<div class="note">
-Time = depth ÷ speed
-</div>
+<div class="result" id="perfResult"></div>
 
 </div>
 
 <div class="card">
 
-<h3 data-icon="🌬️">Breathing Routine</h3>
+<h3 data-icon="📊">Performance Stats</h3>
 
 <p class="description">
-Prepare your pre-dive breathing sequence.
+View your logged sessions and basic stats.
 </p>
 
-<label>
-Number of Deep Breaths
-</label>
-
-<input id="breathCount" type="number" placeholder="e.g., 10" min="1">
-
-<label>
-Breath Interval (seconds)
-</label>
-
-<input id="breathInterval" type="number" placeholder="e.g., 1.5" min="0.5" step="0.5">
-
-<button onclick="calculateBreathingRoutine()">
-Generate Routine
-</button>
-
-<div class="result" id="breathResult">
-—
+<div class="result" id="perfStats">
+<p style="color:var(--muted);font-size:12px;">No sessions logged yet. Start by logging a session above.</p>
 </div>
 
-<div class="note">
-Hyperventilation increases risks. Use controlled breathing.
-</div>
-
-</div>
-
-<div class="card">
-
-<h3 data-icon="💤">Recovery Time</h3>
-
-<p class="description">
-Calculate recommended recovery intervals.
-</p>
-
-<label>
-Dive Time (seconds)
-</label>
-
-<input id="diveTime" type="number" placeholder="e.g., 60" min="1">
-
-<div class="result" id="recoveryResult">
-—
-</div>
-
-<div class="note">
-General guideline: Recovery ≥ 2x dive time
-</div>
+<button onclick="clearPerformanceLogs()" class="btn-danger">Clear All Logs</button>
 
 </div>
 
@@ -1180,62 +1098,55 @@ General guideline: Recovery ≥ 2x dive time
 
 <section id="planner">
 
-<h2>📅 Dive Planner</h2>
+<h2>📅 Training Planner</h2>
 
 <p class="description">
-Plan your freediving sessions and structure your training week.
+Plan your weekly training schedule and stay organized.
 </p>
 
 <div class="grid">
 
 <div class="card">
 
-<h3 data-icon="📋">Weekly Training Plan</h3>
+<h3 data-icon="📝">Add Training Day</h3>
 
-<p class="description">
-Structure your week with different training focuses.
-</p>
-
-<label>Training Focus</label>
-<select id="trainingFocus">
-<option>Static Apnea</option>
-<option>Dynamic Apnea</option>
-<option>Depth Training</option>
-<option>CO₂ Tables</option>
-<option>O₂ Tables</option>
+<label>Day of Week</label>
+<select id="planDay">
+<option>Monday</option>
+<option>Tuesday</option>
+<option>Wednesday</option>
+<option>Thursday</option>
+<option>Friday</option>
+<option>Saturday</option>
+<option>Sunday</option>
 </select>
 
-<label>Sessions per Week</label>
-<input id="sessionsPerWeek" type="number" placeholder="e.g., 3" min="1" max="7">
+<label>Training Type</label>
+<select id="planType">
+<option>CO₂ Table</option>
+<option>O₂ Table</option>
+<option>Static Apnea</option>
+<option>Dynamic Apnea</option>
+<option>Equalization Practice</option>
+<option>Recovery</option>
+</select>
 
-<button onclick="planWeek()">Generate Plan</button>
+<label>Duration (min)</label>
+<input type="number" id="planDuration" placeholder="e.g., 45" min="1">
 
-<div class="result" id="weeklyPlanResult">—</div>
+<button onclick="addTrainingDay()">Add to Schedule</button>
 
 </div>
 
 <div class="card">
 
-<h3 data-icon="⏰">Session Duration</h3>
+<h3 data-icon="🗓️">Weekly Schedule</h3>
 
-<p class="description">
-Calculate optimal training session duration.
-</p>
-
-<label>Training Level</label>
-<select id="trainingLevel">
-<option>Beginner</option>
-<option>Intermediate</option>
-<option>Advanced</option>
-</select>
-
-<button onclick="calculateSessionDuration()">Calculate</button>
-
-<div class="result" id="sessionDurationResult">—</div>
-
-<div class="note">
-Rest days are essential for adaptation and safety.
+<div class="result" id="planResult">
+<p style="color:var(--muted);font-size:12px;">No training days scheduled yet.</p>
 </div>
+
+<button onclick="clearPlan()" class="btn-danger">Clear Schedule</button>
 
 </div>
 
@@ -1250,43 +1161,43 @@ Rest days are essential for adaptation and safety.
 <h2>📝 Dive Log</h2>
 
 <p class="description">
-Track and record your freediving sessions and progress.
+Record and track all your dives with depth, location, and personal notes.
 </p>
 
 <div class="grid">
 
 <div class="card">
 
-<h3 data-icon="📌">Log a Dive</h3>
+<h3 data-icon="🌊">Log a Dive</h3>
 
-<label>Depth (m)</label>
-<input id="logDepth" type="number" placeholder="e.g., 20" min="0">
+<label>Date</label>
+<input type="date" id="logDate">
 
-<label>Duration (seconds)</label>
-<input id="logDuration" type="number" placeholder="e.g., 120" min="0">
+<label>Location</label>
+<input type="text" id="logLocation" placeholder="e.g., Mediterranean">
+
+<label>Max Depth (m)</label>
+<input type="number" id="logDepth" placeholder="e.g., 25" min="0">
+
+<label>Duration (min)</label>
+<input type="number" id="logDuration" placeholder="e.g., 45" min="0">
 
 <label>Notes</label>
-<textarea id="logNotes" placeholder="How did it feel? Any observations?"></textarea>
+<textarea id="logNotes" placeholder="How did you feel? Conditions? Observations?" rows="3"></textarea>
 
-<button onclick="saveDiveLog()">Save Dive</button>
-
-<div class="result" id="logResult">—</div>
+<button onclick="addDiveLog()">Log Dive</button>
 
 </div>
 
 <div class="card">
 
-<h3 data-icon="📖">View History</h3>
+<h3 data-icon="📊">Dive Logs</h3>
 
-<p class="description">
-Review your recent dives and track progress.
-</p>
+<div class="result" id="diveLogsResult">
+<p style="color:var(--muted);font-size:12px;">No dives logged yet.</p>
+</div>
 
-<button onclick="displayDiveHistory()">Show Recent Dives</button>
-
-<div class="result" id="historyResult" style="font-size:11px;max-height:200px;overflow-y:auto;">—</div>
-
-<button onclick="clearDiveLog()" class="btn-danger" style="margin-top:10px;">🗑️ Clear History</button>
+<button onclick="clearDiveLogs()" class="btn-danger">Clear All Logs</button>
 
 </div>
 
@@ -1301,72 +1212,70 @@ Review your recent dives and track progress.
 <h2>⚠️ Safety Guidelines</h2>
 
 <p class="description">
-Essential safety practices for freediving and apnea training.
+Essential safety practices and protocols every freediver must know.
 </p>
 
-<div class="warning warning-danger">
+<div class="warning-danger">
+<strong>⚠️ Shallow Water Blackout (SWB)</strong>
+<p>Never hyperventilate before breath holding. Keep training in controlled environments with a partner. Sudden loss of consciousness can happen without warning.</p>
+</div>
 
-<strong>🚨 CRITICAL SAFETY REMINDERS</strong>
+<div class="grid" style="margin-top:16px;">
 
-<ul style="margin:12px 0;padding-left:20px;">
-<li><strong>Never freedive alone</strong> - Always have a trained buddy present</li>
-<li><strong>Train with certified instructors</strong> - Professional guidance is essential</li>
-<li><strong>Monitor for shallow water blackout</strong> - Loss of consciousness can be fatal</li>
-<li><strong>Avoid hyperventilation</strong> - It reduces CO₂ signals and increases blackout risk</li>
-<li><strong>Respect your limits</strong> - Progressive training prevents injuries</li>
-<li><strong>Know mammalian dive reflex</strong> - Understand your body's responses at depth</li>
-<li><strong>Maintain fitness</strong> - Good cardiovascular health is crucial</li>
-<li><strong>Check equipment regularly</strong> - Proper gear prevents accidents</li>
+<div class="card">
+
+<h3 data-icon="👥">The Buddy System</h3>
+
+<p class="description">
+Always dive with a trained partner who can respond in emergencies.
+</p>
+
+<div class="result" style="border:none;padding:0;background:transparent;">
+<ul style="margin:0;padding-left:20px;font-size:13px;line-height:1.6;">
+<li>Maintain eye contact underwater</li>
+<li>Use agreed-upon hand signals</li>
+<li>Establish safety limits beforehand</li>
+<li>Never exceed your training level</li>
 </ul>
+</div>
 
 </div>
 
-<div class="grid" style="margin-top:20px;">
+<div class="card">
+
+<h3 data-icon="🏥">Emergency Response</h3>
+
+<p class="description">
+Know CPR and recovery procedures.
+</p>
+
+<div class="result" style="border:none;padding:0;background:transparent;">
+<ul style="margin:0;padding-left:20px;font-size:13px;line-height:1.6;">
+<li>Bring unconscious diver to surface</li>
+<li>Place on back and tilt head back</li>
+<li>Begin CPR if not breathing</li>
+<li>Call emergency services immediately</li>
+</ul>
+</div>
+
+</div>
 
 <div class="card">
 
 <h3 data-icon="✅">Pre-Dive Checklist</h3>
 
 <p class="description">
-Complete before every session.
+Always perform before entering the water.
 </p>
 
-<label style="display:flex;align-items:center;">
-<input type="checkbox" style="width:auto;margin-right:8px;"> Buddy present and aware
-</label>
-
-<label style="display:flex;align-items:center;">
-<input type="checkbox" style="width:auto;margin-right:8px;"> Equipment inspected
-</label>
-
-<label style="display:flex;align-items:center;">
-<input type="checkbox" style="width:auto;margin-right:8px;"> Safety procedures reviewed
-</label>
-
-<label style="display:flex;align-items:center;">
-<input type="checkbox" style="width:auto;margin-right:8px;"> Water conditions acceptable
-</label>
-
-<label style="display:flex;align-items:center;">
-<input type="checkbox" style="width:auto;margin-right:8px;"> Personal feeling good
-</label>
-
-</div>
-
-<div class="card">
-
-<h3 data-icon="🆘">Emergency Procedures</h3>
-
-<p class="description">
-Know what to do in emergencies.
-</p>
-
-<div class="note" style="padding:12px;background:rgba(92,199,255,.1);border:1px solid var(--border-light);border-radius:6px;">
-<strong>If buddy loses consciousness:</strong><br>
-1. Bring them to surface immediately<br>
-2. Clear airway<br>
-3. Begin rescue breathing if trained<br>
-4. Call emergency services<br>
+<div class="result" style="border:none;padding:0;background:transparent;">
+<ul style="margin:0;padding-left:20px;font-size:13px;line-height:1.6;">
+<li>Equipment inspection</li>
+<li>Buddy briefing</li>
+<li>Surface interval time</li>
+<li>No hyperventilation</li>
+<li>Calm mental state</li>
+</ul>
 </div>
 
 </div>
@@ -1379,143 +1288,121 @@ Know what to do in emergencies.
 
 <section id="resources">
 
-<h2>🔗 Resources & References</h2>
+<h2>🔗 Resources & Learning</h2>
 
 <p class="description">
-Trusted organizations, training centers, and educational materials for freediving.
+Recommended materials and links to expand your freediving knowledge and training.
 </p>
 
 <div class="grid">
 
 <div class="resource-card">
-<h4>🏢 AIDA International</h4>
-<p>World federation for freediving. Certifications, competitions, and training standards.</p>
-<a href="https://www.aidainternational.org" target="_blank">Visit AIDA</a>
+<h4>🎓 Freediving Certification Organizations</h4>
+<p>Get certified through recognized international bodies like AIDA, CMAS, and IANTD.</p>
+<a href="https://www.aida-international.org/" target="_blank">AIDA International</a>
 </div>
 
 <div class="resource-card">
-<h4>🏊 SSI Freediving</h4>
-<p>Scuba Schools International freediving programs and instructor certifications.</p>
-<a href="https://www.divessi.com" target="_blank">Visit SSI</a>
+<h4>📚 Training & Education</h4>
+<p>Learn advanced techniques, apnea physiology, and training methodologies from experts.</p>
+<a href="https://www.apnea.org/" target="_blank">Apnea Academy</a>
 </div>
 
 <div class="resource-card">
-<h4>🎓 Molchanovs</h4>
-<p>Freediving education, coaching, and performance training methodology.</p>
-<a href="https://www.molchanovs.com" target="_blank">Visit Molchanovs</a>
+<h4>🏖️ Freediving Destinations</h4>
+<p>Discover the world's best freediving spots and training destinations.</p>
+<a href="https://www.wannadive.com/" target="_blank">WannaDive</a>
 </div>
 
 <div class="resource-card">
-<h4>🌍 CMAS</h4>
-<p>Confédération Mondiale des Activités Subaquatiques - World underwater federation.</p>
-<a href="https://www.cmas.org" target="_blank">Visit CMAS</a>
+<h4>⚙️ Equipment & Gear</h4>
+<p>Learn about wetsuits, fins, weights, and other essential freediving equipment.</p>
+<a href="https://www.freedivingshop.com/" target="_blank">Freediving Shop</a>
 </div>
 
 <div class="resource-card">
-<h4>💻 FreedivingBase</h4>
-<p>Community platform for freediving news, training, and destination guides.</p>
-<a href="https://freedivingbase.com" target="_blank">Visit FreedivingBase</a>
+<h4>🔬 Physics & Physiology</h4>
+<p>Understand the science behind freediving, pressure changes, and breath hold physiology.</p>
+<a href="https://www.researchgate.net/" target="_blank">ResearchGate</a>
 </div>
 
 <div class="resource-card">
-<h4>🆘 DAN (Divers Alert Network)</h4>
-<p>Diving safety organization with emergency protocols and medical support.</p>
-<a href="https://www.diversalertnetwork.org" target="_blank">Visit DAN</a>
+<h4>🌍 Community & Forums</h4>
+<p>Join freediving communities, share experiences, and learn from other divers worldwide.</p>
+<a href="https://www.freedivingforum.com/" target="_blank">Freediving Forum</a>
 </div>
 
 </div>
 
 </section>
 
-<!-- SEO SECTION: Freediving Content -->
-<section class="seo-section">
-<h3>📚 Comprehensive Freediving & Apnea Training Guide</h3>
+<!-- SEO Section -->
 
-<p>Welcome to the ultimate freediving training toolkit for apnea enthusiasts, students, and competitive freedivers. Our educational platform provides science-based tools for training, learning proper techniques, and improving performance safely.</p>
+<div class="seo-section">
 
-<h4>Freediving Disciplines & Techniques</h4>
+<h3>📚 About This Toolkit</h3>
+
+<p>
+The <strong>Freediving Training Toolkit</strong> is an educational resource designed to support freediving training, education, and performance improvement. It provides physics-based calculators, training table generators, and tracking tools for both recreational and competitive freedivers.
+</p>
+
+<h4>Key Features:</h4>
 <ul>
-<li><strong>Static Apnea (STA)</strong> - Breath holding on the surface</li>
-<li><strong>Dynamic Apnea</strong> - Horizontal distance underwater</li>
-<li><strong>Constant Weight (CWT)</strong> - Weighted dive to depth</li>
-<li><strong>Free Immersion</strong> - Pulling down rope to depth</li>
-<li><strong>No Limits</strong> - Sled descent/ascent</li>
-<li><strong>Depth Training</strong> - Freediving at various depths</li>
+<li>Physics calculators (pressure, lung compression, gas laws)</li>
+<li>CO₂ and O₂ table generators for structured breathing training</li>
+<li>Static apnea timer for breath-hold practice</li>
+<li>Performance tracking and dive logging</li>
+<li>Training schedule planner</li>
+<li>Safety guidelines and emergency protocols</li>
+<li>Educational resources and certifications</li>
 </ul>
 
-<h4>Essential Freediving Gear & Equipment</h4>
+<h4>Who Is This For?</h4>
 <ul>
-<li>Wetsuits & Thermal Protection</li>
-<li>Fins - Monofin vs Bifin</li>
-<li>Masks & Snorkels</li>
-<li>Weights & Weight Belts</li>
-<li>Depth Gauges & Dive Computers</li>
-<li>Dive Lights & Navigation</li>
-<li>Safety Equipment - SMBs, Whistles</li>
-<li>Lanyard & Carabiners</li>
+<li>Recreational freediving enthusiasts learning proper techniques</li>
+<li>Competitive apnea athletes preparing for competitions</li>
+<li>Freediving instructors teaching new students</li>
+<li>Anyone interested in apnea physiology and breath-hold training</li>
 </ul>
 
-<h4>Freediving Training Programs</h4>
-<p>Learn from certified freediving schools and training centers worldwide. Our tools support all major certifications and training methods.</p>
+<h4>Safety Reminder:</h4>
+<p>
+<strong>Always train with a certified instructor and a trained buddy. Never freedive alone.</strong> Shallow water blackout can occur suddenly and without warning. This toolkit is for educational purposes and training support only—not a substitute for professional instruction or medical advice.
+</p>
 
-<h4>Popular Freediving Destinations</h4>
+<h4>Topics Covered:</h4>
 <ul>
-<li>Egypt - Red Sea Reefs</li>
-<li>Mediterranean - Greece, Italy, Croatia</li>
-<li>Caribbean - Turks & Caicos, Bahamas</li>
-<li>Southeast Asia - Philippines, Indonesia</li>
-<li>Pacific - Fiji, Palau, New Zealand</li>
-<li>Central America - Mexico, Costa Rica</li>
-<li>Asia - Thailand, Vietnam</li>
+<li>Freediving basics and techniques</li>
+<li>Apnea training methods</li>
+<li>Physics and pressure calculations</li>
+<li>Breathing tables (CO₂ and O₂ training)</li>
+<li>Safety protocols and emergency response</li>
+<li>Equipment selection and maintenance</li>
+<li>Dive planning and depth training</li>
+<li>Training periodization and progression</li>
+<li>Mental preparation and relaxation</li>
+<li>Competition preparation</li>
 </ul>
 
-<h4>Training Methods & Practice Protocols</h4>
-<ul>
-<li>CO₂ Table Training - Stress Tolerance</li>
-<li>O₂ Table Training - Performance Improvement</li>
-<li>Static Apnea Training - Surface Training</li>
-<li>Pool Training - Technique Development</li>
-<li>Open Water Training - Real-world Practice</li>
-<li>Breathing Exercises - Pre-dive Preparation</li>
-<li>Stretching & Flexibility Routines</li>
-</ul>
+</div>
 
-<h4>Safety in Freediving</h4>
-<p>Always train with a qualified buddy and follow safety protocols. Never freedive alone. Use proper training centers and maintain fitness. Monitor for mammalian dive reflex symptoms and shallow water blackout risks.</p>
-
-<h4>Freediving Physiology</h4>
-<p>Understanding body mechanics: Boyle's Law, pressure adaptation, nitrogen narcosis at depth, oxygen consumption rates, CO₂ buildup, and proper equalization techniques.</p>
-
-</section>
+</div>
 
 <footer>
-<div style="margin-bottom:20px;">
-<strong>🌊 Freediving Training Toolkit - Educational Platform for Apnea & Diving</strong>
-</div>
-<p>
-This toolkit provides educational resources for freediving training, breath holding practice, and dive planning. 
-Learn proper techniques, track your static apnea progress, understand physics-based training methods, and discover 
-freediving schools and destinations worldwide.
-</p>
-<p>
-<strong>Keywords:</strong> freediving, apnea training, static apnea, dynamic apnea, breath holding, constant weight diving, 
-freediving schools, training centers, dive destinations, apnea techniques, freediving gear, equipment, CO2 training, O2 training, 
-diving physics, pressure calculations, freediving education, competitive freediving
-</p>
-<p>
-Disclaimer: Freediving is an inherently risky activity. Always train with certified instructors and follow all safety guidelines. 
-Never train alone. Consult with professionals before attempting any training protocols.
-</p>
-<p style="margin-top:20px;color:var(--muted);">
-&copy; 2024 Freediving Training Toolkit | Educational Purpose Only | Stay Safe, Train Smart
-</p>
-</footer>
 
-</div>
+<p>
+<strong>Freediving Training Toolkit</strong> — Educational resource for freediving training and apnea practice. Always train with a partner and follow safety protocols.
+</p>
+
+<p style="color:var(--muted);font-size:11px;margin-top:12px;">
+Learn more: <a href="about.html" style="color:var(--accent-light);text-decoration:none;">About</a>
+</p>
+
+</footer>
 
 <script>
 
-// Theme toggle
+// Theme Toggle
 function toggleTheme() {
 const html = document.documentElement;
 const btn = document.getElementById('themeBtn');
@@ -1530,239 +1417,251 @@ localStorage.setItem('theme', 'light');
 }
 }
 
-// Load theme on startup
-const savedTheme = localStorage.getItem('theme') || 'dark';
+// Load theme preference
+window.addEventListener('load', function() {
+const savedTheme = localStorage.getItem('theme');
+const btn = document.getElementById('themeBtn');
 if (savedTheme === 'light') {
 document.documentElement.classList.add('light');
-document.getElementById('themeBtn').textContent = '☀️ Light';
-}
-
-// Physics calculations
-document.getElementById('depth')?.addEventListener('input', function() {
-const depth = parseFloat(this.value);
-if (!isNaN(depth) && depth >= 0) {
-const pressure = (depth / 10) + 1;
-document.getElementById('pressureResult').textContent = `${pressure.toFixed(2)} bar`;
+btn.textContent = '☀️ Light';
 }
 });
 
-document.getElementById('lung')?.addEventListener('input', updateLung);
-document.getElementById('lungDepth')?.addEventListener('input', updateLung);
+// Physics Calculations
+document.getElementById('depth')?.addEventListener('input', function() {
+const depth = parseFloat(this.value);
+if (depth >= 0) {
+const pressure = (depth / 10) + 1;
+document.getElementById('pressureResult').textContent = `Pressure: ${pressure.toFixed(2)} bar`;
+}
+});
 
-function updateLung() {
+document.getElementById('lung')?.addEventListener('input', calculateLung);
+document.getElementById('lungDepth')?.addEventListener('input', calculateLung);
+
+function calculateLung() {
 const lung = parseFloat(document.getElementById('lung').value);
-const lungDepth = parseFloat(document.getElementById('lungDepth').value);
-if (!isNaN(lung) && !isNaN(lungDepth) && lung > 0 && lungDepth >= 0) {
-const pressureAtDepth = (lungDepth / 10) + 1;
-const compressedVolume = lung / pressureAtDepth;
-document.getElementById('lungResult').textContent = `${compressedVolume.toFixed(2)} L at ${lungDepth}m`;
+const depth = parseFloat(document.getElementById('lungDepth').value);
+if (lung > 0 && depth >= 0) {
+const pressure = (depth / 10) + 1;
+const compressedVolume = lung / pressure;
+document.getElementById('lungResult').textContent = `At ${depth}m: ${compressedVolume.toFixed(2)} L (compressed from ${lung}L)`;
 }
 }
 
-// Performance calculations
-document.getElementById('perfDepth')?.addEventListener('input', updatePerf);
-document.getElementById('perfSpeed')?.addEventListener('input', updatePerf);
-
-function updatePerf() {
-const depth = parseFloat(document.getElementById('perfDepth').value);
-const speed = parseFloat(document.getElementById('perfSpeed').value);
-if (!isNaN(depth) && !isNaN(speed) && speed > 0) {
-const time = depth / speed;
-document.getElementById('perfResult').textContent = `${time.toFixed(1)} seconds`;
-}
-}
-
-// Training table generation
+// CO2 Table
 function generateCO2() {
 const hold = parseInt(document.getElementById('co2Hold').value);
 const rest = parseInt(document.getElementById('co2Rest').value);
 const rounds = parseInt(document.getElementById('co2Rounds').value);
 
-let table = '<table>';
-table += '<tr><th>Round</th><th>Hold (s)</th><th>Rest (s)</th></tr>';
+if (!hold || !rest || !rounds) return;
 
+let table = '<strong>CO₂ Table</strong><table><tr><th>Round</th><th>Hold (s)</th><th>Rest (s)</th></tr>';
+let restInterval = rest;
 for (let i = 1; i <= rounds; i++) {
-const newRest = Math.max(10, rest - (5 * (i - 1)));
-table += `<tr><td>${i}</td><td>${hold}</td><td>${newRest}</td></tr>`;
+table += `<tr><td>${i}</td><td>${hold}</td><td>${restInterval}</td></tr>`;
+restInterval = Math.max(10, restInterval - (rest / rounds));
 }
-
 table += '</table>';
 document.getElementById('co2Result').innerHTML = table;
 }
 
+// O2 Table
 function generateO2() {
-const startHold = parseInt(document.getElementById('o2Hold').value);
+const hold = parseInt(document.getElementById('o2Hold').value);
 const rest = parseInt(document.getElementById('o2Rest').value);
 const rounds = parseInt(document.getElementById('o2Rounds').value);
 
-let table = '<table>';
-table += '<tr><th>Round</th><th>Hold (s)</th><th>Rest (s)</th></tr>';
+if (!hold || !rest || !rounds) return;
 
+let table = '<strong>O₂ Table</strong><table><tr><th>Round</th><th>Hold (s)</th><th>Rest (s)</th></tr>';
+let holdInterval = hold;
 for (let i = 1; i <= rounds; i++) {
-const newHold = Math.max(10, startHold - (10 * (i - 1)));
-table += `<tr><td>${i}</td><td>${newHold}</td><td>${rest}</td></tr>`;
+table += `<tr><td>${i}</td><td>${Math.round(holdInterval)}</td><td>${rest}</td></tr>`;
+holdInterval -= (hold / rounds);
 }
-
 table += '</table>';
 document.getElementById('o2Result').innerHTML = table;
 }
 
-// Breathing routine
-function calculateBreathingRoutine() {
-const count = parseInt(document.getElementById('breathCount').value);
-const interval = parseFloat(document.getElementById('breathInterval').value);
-if (isNaN(count) || isNaN(interval)) return;
-
-const totalTime = count * interval;
-document.getElementById('breathResult').innerHTML = `
-${count} deep breaths × ${interval}s = <strong>${totalTime.toFixed(1)} seconds total</strong><br>
-Take controlled breaths, avoid hyperventilation. Relax and focus.
-`;
-}
-
-// Recovery time
-document.getElementById('diveTime')?.addEventListener('input', function() {
-const diveTime = parseFloat(this.value);
-if (!isNaN(diveTime) && diveTime > 0) {
-const recovery = diveTime * 2;
-document.getElementById('recoveryResult').textContent = `Recommended: ${recovery.toFixed(0)} seconds (${(recovery/60).toFixed(1)} minutes)`;
-}
-});
-
-// Planner functions
-function planWeek() {
-const focus = document.getElementById('trainingFocus').value;
-const sessions = parseInt(document.getElementById('sessionsPerWeek').value);
-if (isNaN(sessions) || sessions < 1) return;
-
-document.getElementById('weeklyPlanResult').innerHTML = `
-<strong>Weekly ${focus} Plan (${sessions} sessions)</strong><br>
-Training load: ${sessions}/week<br>
-Rest days: ${7-sessions} days<br>
-Focus: Progressive improvement with adequate recovery
-`;
-}
-
-function calculateSessionDuration() {
-const level = document.getElementById('trainingLevel').value;
-const durations = {
-'Beginner': '30-45 minutes',
-'Intermediate': '45-60 minutes',
-'Advanced': '60-90 minutes'
-};
-document.getElementById('sessionDurationResult').textContent = `Recommended: ${durations[level]}`;
-}
-
-// Dive log functions
-function saveDiveLog() {
-const depth = parseFloat(document.getElementById('logDepth').value);
-const duration = parseInt(document.getElementById('logDuration').value);
-const notes = document.getElementById('logNotes').value;
-
-if (isNaN(depth) || isNaN(duration)) {
-document.getElementById('logResult').textContent = 'Please fill in depth and duration';
-return;
-}
-
-let logs = JSON.parse(localStorage.getItem('diveLogs') || '[]');
-logs.push({
-date: new Date().toLocaleString(),
-depth: depth,
-duration: duration,
-notes: notes
-});
-localStorage.setItem('diveLogs', JSON.stringify(logs));
-document.getElementById('logResult').innerHTML = `<span style="color:var(--ok);">✓ Dive logged!</span>`;
-
-document.getElementById('logDepth').value = '';
-document.getElementById('logDuration').value = '';
-document.getElementById('logNotes').value = '';
-}
-
-function displayDiveHistory() {
-let logs = JSON.parse(localStorage.getItem('diveLogs') || '[]');
-if (logs.length === 0) {
-document.getElementById('historyResult').textContent = 'No dives logged yet';
-return;
-}
-
-let html = '<strong>Recent Dives:</strong><br>';
-logs.slice(-10).reverse().forEach((log, i) => {
-html += `<div style="margin:8px 0;padding:8px;background:rgba(92,199,255,.05);border-radius:4px;border-left:2px solid var(--accent-light);">
-${log.date}<br>
-Depth: ${log.depth}m | Time: ${log.duration}s<br>
-${log.notes ? `Notes: ${log.notes}` : 'No notes'}
-</div>`;
-});
-document.getElementById('historyResult').innerHTML = html;
-}
-
-function clearDiveLog() {
-if (confirm('Clear all dive logs? This cannot be undone.')) {
-localStorage.removeItem('diveLogs');
-document.getElementById('historyResult').textContent = 'Dive history cleared';
-}
-}
-
-// Timer
+// Static Apnea Timer
 let timerInterval = null;
 let timerSeconds = 0;
-let timerRunning = false;
-let targetSeconds = 0;
 
 function startTimer() {
-const target = parseInt(document.getElementById('target').value);
-if (isNaN(target) || target <= 0) return;
-
-if (!timerRunning) {
-targetSeconds = target;
-timerRunning = true;
-
+if (timerInterval) return;
 timerInterval = setInterval(() => {
 timerSeconds++;
 updateTimerDisplay();
-
-if (timerSeconds >= targetSeconds) {
-clearInterval(timerInterval);
-timerRunning = false;
-document.getElementById('marker').textContent = '✓ Target reached!';
-document.getElementById('marker').style.color = 'var(--ok)';
-}
 }, 1000);
-}
 }
 
 function pauseTimer() {
-if (timerRunning) {
 clearInterval(timerInterval);
-timerRunning = false;
-document.getElementById('marker').textContent = 'Paused';
-}
+timerInterval = null;
 }
 
 function resetTimer() {
 clearInterval(timerInterval);
+timerInterval = null;
 timerSeconds = 0;
-timerRunning = false;
-targetSeconds = 0;
 updateTimerDisplay();
-document.getElementById('marker').textContent = 'Ready';
-document.getElementById('marker').style.color = 'inherit';
 }
 
 function updateTimerDisplay() {
 const minutes = Math.floor(timerSeconds / 60);
 const seconds = timerSeconds % 60;
-const display = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
-document.getElementById('timer').textContent = display;
+document.getElementById('timerDisplay').textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+}
 
-if (targetSeconds > 0) {
-const progress = (timerSeconds / targetSeconds) * 100;
-document.getElementById('progress').style.width = Math.min(progress, 100) + '%';
+// Performance Logging
+function logPerformance() {
+const date = document.getElementById('perfDate').value;
+const type = document.getElementById('perfType').value;
+const duration = document.getElementById('perfDuration').value;
+const notes = document.getElementById('perfNotes').value;
+
+if (!date || !duration) {
+alert('Please fill in all required fields');
+return;
+}
+
+let logs = JSON.parse(localStorage.getItem('performanceLogs')) || [];
+logs.push({ date, type, duration, notes });
+localStorage.setItem('performanceLogs', JSON.stringify(logs));
+
+document.getElementById('perfResult').textContent = '✅ Session logged!';
+document.getElementById('perfDate').value = '';
+document.getElementById('perfDuration').value = '';
+document.getElementById('perfNotes').value = '';
+
+updatePerformanceStats();
+}
+
+function updatePerformanceStats() {
+const logs = JSON.parse(localStorage.getItem('performanceLogs')) || [];
+if (logs.length === 0) return;
+
+const totalSessions = logs.length;
+const totalDuration = logs.reduce((sum, log) => sum + parseInt(log.duration), 0);
+const avgDuration = (totalDuration / totalSessions).toFixed(1);
+
+let stats = `<strong>Performance Stats</strong>
+<table>
+<tr><th>Metric</th><th>Value</th></tr>
+<tr><td>Total Sessions</td><td>${totalSessions}</td></tr>
+<tr><td>Total Duration</td><td>${totalDuration} min</td></tr>
+<tr><td>Avg per Session</td><td>${avgDuration} min</td></tr>
+</table>`;
+
+document.getElementById('perfStats').innerHTML = stats;
+}
+
+function clearPerformanceLogs() {
+if (confirm('Clear all performance logs?')) {
+localStorage.removeItem('performanceLogs');
+document.getElementById('perfStats').innerHTML = '<p style="color:var(--muted);font-size:12px;">No sessions logged yet.</p>';
 }
 }
+
+// Training Planner
+function addTrainingDay() {
+const day = document.getElementById('planDay').value;
+const type = document.getElementById('planType').value;
+const duration = document.getElementById('planDuration').value;
+
+if (!duration) {
+alert('Please fill in all fields');
+return;
+}
+
+let plan = JSON.parse(localStorage.getItem('trainingPlan')) || [];
+plan.push({ day, type, duration });
+localStorage.setItem('trainingPlan', JSON.stringify(plan));
+
+updatePlanDisplay();
+}
+
+function updatePlanDisplay() {
+const plan = JSON.parse(localStorage.getItem('trainingPlan')) || [];
+if (plan.length === 0) {
+document.getElementById('planResult').innerHTML = '<p style="color:var(--muted);font-size:12px;">No training days scheduled yet.</p>';
+return;
+}
+
+let html = '<strong>Weekly Schedule</strong><table><tr><th>Day</th><th>Type</th><th>Duration</th></tr>';
+plan.forEach(item => {
+html += `<tr><td>${item.day}</td><td>${item.type}</td><td>${item.duration} min</td></tr>`;
+});
+html += '</table>';
+document.getElementById('planResult').innerHTML = html;
+}
+
+function clearPlan() {
+if (confirm('Clear entire training schedule?')) {
+localStorage.removeItem('trainingPlan');
+updatePlanDisplay();
+}
+}
+
+// Dive Logging
+function addDiveLog() {
+const date = document.getElementById('logDate').value;
+const location = document.getElementById('logLocation').value;
+const depth = document.getElementById('logDepth').value;
+const duration = document.getElementById('logDuration').value;
+const notes = document.getElementById('logNotes').value;
+
+if (!date || !location || !depth) {
+alert('Please fill in all required fields');
+return;
+}
+
+let logs = JSON.parse(localStorage.getItem('diveLogs')) || [];
+logs.push({ date, location, depth, duration, notes });
+localStorage.setItem('diveLogs', JSON.stringify(logs));
+
+document.getElementById('logDate').value = '';
+document.getElementById('logLocation').value = '';
+document.getElementById('logDepth').value = '';
+document.getElementById('logDuration').value = '';
+document.getElementById('logNotes').value = '';
+
+updateDiveLogsDisplay();
+}
+
+function updateDiveLogsDisplay() {
+const logs = JSON.parse(localStorage.getItem('diveLogs')) || [];
+if (logs.length === 0) {
+document.getElementById('diveLogsResult').innerHTML = '<p style="color:var(--muted);font-size:12px;">No dives logged yet.</p>';
+return;
+}
+
+let html = '<strong>Dive History</strong><table><tr><th>Date</th><th>Location</th><th>Depth (m)</th><th>Duration (min)</th></tr>';
+logs.forEach(log => {
+html += `<tr><td>${log.date}</td><td>${log.location}</td><td>${log.depth}</td><td>${log.duration || '—'}</td></tr>`;
+});
+html += '</table>';
+document.getElementById('diveLogsResult').innerHTML = html;
+}
+
+function clearDiveLogs() {
+if (confirm('Clear all dive logs?')) {
+localStorage.removeItem('diveLogs');
+updateDiveLogsDisplay();
+}
+}
+
+// Load data on page load
+window.addEventListener('load', function() {
+updatePerformanceStats();
+updatePlanDisplay();
+updateDiveLogsDisplay();
+});
 
 </script>
 
 </body>
+
 </html>
